@@ -18,11 +18,11 @@ body {
 		<p:growl id="messages" />
 
 		<p:menubar>
-			<p:menuitem value="Página Inicial" url="#" />
+			<p:menuitem value="Página Inicial" url="paginaPrincipal.xhtml" />
 
 			<p:submenu style="margin-left:1%" label="Administração">
-				<p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
-				<p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Cadastro de Alunos" url="cadastroAluno.xhtml"  />
+				<p:menuitem value="Cadastro de Professores" url="cadastroProfessor.xhtml"  />
 			</p:submenu>
 
 			<p:menuitem style="margin-left:7%" value="Lançar Notas" url="#" />
@@ -33,7 +33,7 @@ body {
 			</p:submenu>
 
 			<p:menuitem style="margin-left:5%" value="Agendamento de Eventos"
-				url="#" />
+				url="agendarEventos.xhtml" />
 
 			<p:menuitem style="margin-left:7%" value="Alterar Senha" url="#" />
 
@@ -50,9 +50,8 @@ body {
 				<p:inputText id="nome" style="width:70%" />
 
 				<h:outputLabel style="margin-left:3%;" value="Sexo: " />
-				<h:selectOneMenu id="sexo" required="true">
-					<f:selectItem itemLabel="--Escolha o Sexo--" itemValue=""
-						noSelectionOption="true" />
+				<h:selectOneMenu id="sexo" >
+					<f:selectItem itemLabel="--Escolha o Sexo--" noSelectionOption="true" />
 					<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 					<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
 				</h:selectOneMenu>
@@ -62,23 +61,23 @@ body {
 				<h:outputText style="margin-left:3%" value="Cidade Natal: " />
 				<p:inputText id="cidade" style="width:53.6%" />
 				<h:outputLabel style="margin-left:3%;" value="UF: " />
-				<h:selectOneMenu id="uf" required="true">
-					<f:selectItem itemLabel="--Escolha o Estado--" itemValue=""
+				<h:selectOneMenu id="uf">
+					<f:selectItem itemLabel="--Escolha o Estado--" 
 						noSelectionOption="true" />
 						<f:selectItem itemLabel="Não-Brasileiro" itemValue="nbrasileiro" />
 				</h:selectOneMenu>
 				<p />
 				<h:outputText value="Estado Civil: " />
-				<h:selectOneMenu id="estcivil" required="true">
-					<f:selectItem itemLabel="Solteiro(a)" itemValue="Solteiro" />
-					<f:selectItem itemLabel="Amaziado(a)" itemValue="Amaziado" />
-					<f:selectItem itemLabel="Casado(a)" itemValue="Casado" />
-					<f:selectItem itemLabel="Divorciado(a)" itemValue="Divorciado" />
-					<f:selectItem itemLabel="Viúvo(a)" itemValue="Viúvo" />
+				<h:selectOneMenu id="estcivil">
+					<f:selectItem itemLabel="Solteiro(a)" itemValue="solteiro" />
+					<f:selectItem itemLabel="Amaziado(a)" itemValue="amaziado" />
+					<f:selectItem itemLabel="Casado(a)" itemValue="casado" />
+					<f:selectItem itemLabel="Divorciado(a)" itemValue="divorciado" />
+					<f:selectItem itemLabel="Viúvo(a)" itemValue="viuvo" />
 				</h:selectOneMenu>
 				<h:outputText style="margin-left:12%;" value="Grau de Instrução: " />
-				<h:selectOneMenu id="grauinst" required="true">
-				<f:selectItem itemLabel="-- Selecione o grau de instrução --" itemValue=""
+				<h:selectOneMenu id="grauinst">
+				<f:selectItem itemLabel="-- Selecione o grau de instrução --" 
 						noSelectionOption="true" />
 					<f:selectItem itemLabel="Segundo Grau Incompleto" itemValue="seginc" />
 					<f:selectItem itemLabel="Segundo Grau Completo" itemValue="segcom" />
@@ -87,14 +86,14 @@ body {
 					<f:selectItem itemLabel="Graduado(a)" itemValue="graduado" />
 				</h:selectOneMenu>
 				<h:outputText style="margin-left:13%;" value="Especialização: " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<p />
 				<h:outputText value="Última Instituição de Ensino: " />
 				<p:inputText id="ultimainst" style="width:77.8%" />
 				<p />
 				<h:outputText value="Titulação: " />
-				<h:selectOneMenu id="titulacao" required="true">
-				<f:selectItem itemLabel="-- Selecione a titulação --" itemValue=""
+				<h:selectOneMenu id="titulacao" >
+				<f:selectItem itemLabel="-- Selecione a titulação --" 
 						noSelectionOption="true" />
 					<f:selectItem itemLabel="Pós-Graduado" itemValue="posgrad" />
 					<f:selectItem itemLabel="Mestrado" itemValue="mestrado" />
@@ -105,62 +104,62 @@ body {
 				<p:inputText id="areatitula" style="width: 63.8%" />
 				<p />
 				<h:outputText value="Nome da Instituição: " />
-				<p:inputText id="areatitula" style="width:83.2%" />
+				<p:inputText id="nomeinstituicao" style="width:83.2%" />
 				<p />
 				<p />
 				<h:outputText value="Disciplinas que irá ministrar: " />
 				<h:outputText style="margin-left:45%;" value="Grade de Ensino: " />
 				<p />
 				<h:outputText value="Português: " />
-				<p:selectBooleanCheckbox style="margin-left:1%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:1%" />
 				<h:outputText style="margin-left:5%" value="Informática: " />
-				<p:selectBooleanCheckbox style="margin-left:1.4%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:1.4%" />
 				<h:outputText style="margin-left:30%" value="1 Ano " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<h:outputText style="margin-left:5%" value="5 Ano " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<h:outputText style="margin-left:5%" value="1 Colegial " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<p />
 				<h:outputText value="Matemática: " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<h:outputText style="margin-left:5%" value="Ed. Física: " />
-				<p:selectBooleanCheckbox style="margin-left:2.2%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:2.2%" />
 				<h:outputText style="margin-left:30%" value="2 Ano " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<h:outputText style="margin-left:5%" value="6 Ano " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<h:outputText style="margin-left:5%" value="2 Colegial " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<p />
 				<h:outputText value="História: " />
-				<p:selectBooleanCheckbox style="margin-left:2.7%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:2.7%" />
 				<h:outputText style="margin-left:5%" value="Ed. Religiosa: " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<h:outputText style="margin-left:30%" value="3 Ano " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<h:outputText style="margin-left:5%" value="7 Ano " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<h:outputText style="margin-left:5%" value="3 Colegial " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<p />
 				<h:outputText value="Geografia: " />
-				<p:selectBooleanCheckbox style="margin-left:1.1%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:1.1%" />
 				<h:outputText style="margin-left:46.7%" value="4 Ano " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<h:outputText style="margin-left:5%" value="8 Ano " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<p />
 				<h:outputText value="Física: " />
-				<p:selectBooleanCheckbox style="margin-left:3.8%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:3.8%" />
 				<h:outputText style="margin-left:57.7%" value="9 Ano " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<p />
 				<h:outputText value="Química: " />
-				<p:selectBooleanCheckbox style="margin-left:2.1%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:2.1%" />
 				<p />
 				<h:outputText value="Ciências: " />
-				<p:selectBooleanCheckbox style="margin-left:1.8%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:1.8%" />
 				<p />
 				<p:button  style="margin-left:40%" value="Salvar" actionListener=""/>	
 				<p:button style="margin-left:2%" value="Voltar" actionListener=""/>	

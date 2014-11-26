@@ -18,11 +18,11 @@ body {
 	<p:growl id="messages" />
 
 		<p:menubar>
-			<p:menuitem value="Página Inicial" url="#" />
+			<p:menuitem value="Página Inicial" url="paginaPrincipal.xhtml" />
 
 			<p:submenu style="margin-left:1%" label="Administração">
-				<p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
-				<p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Cadastro de Alunos" url="cadastroAluno.xhtml"  />
+				<p:menuitem value="Cadastro de Professores" url="cadastroProfessor.xhtml"  />
 			</p:submenu>
 
 			<p:menuitem style="margin-left:7%" value="Lançar Notas" url="#" />
@@ -33,7 +33,7 @@ body {
 			</p:submenu>
 
 			<p:menuitem style="margin-left:5%" value="Agendamento de Eventos"
-				url="#" />
+				url="agendarEventos.xhtml" />
 
 			<p:menuitem style="margin-left:7%" value="Alterar Senha" url="#" />
 
@@ -63,7 +63,7 @@ body {
 				</h:selectOneMenu>
 				<p />
 				<h:outputText value="Alunos Específicos: " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<p />
 				<h:outputText value="Selecione o Aluno: " />
 				<h:selectOneMenu id="aluno" required="true">
@@ -72,22 +72,60 @@ body {
 				</h:selectOneMenu>
 				<p />
 				<p />
-			<h:outputText style="margin-left:4%" value="Primeiro Bimestre : " />
+			<h:outputText style="margin-left:6%" value="Primeiro Bimestre : " />
+			<h:outputText style="margin-left:11%" value="Segundo Bimestre : " />
+			<h:outputText style="margin-left:13%" value="Terceiro Bimestre : " />
+			<h:outputText style="margin-left:12%" value="Quarto Bimestre : " />
 			<p />
-			<h:outputText value="1 Prova: " />
-			<p:selectBooleanCheckbox value="" />
+			<h:outputText style="margin-left:4%"  value="1 Prova: " />
+			<p:selectBooleanCheckbox style="margin-left:8%" />
+			<h:outputText style="margin-left:10%" value="1 Prova: " />
+			<p:selectBooleanCheckbox style="margin-left:8%" />
+			<h:outputText style="margin-left:10%" value="1 Prova: " />
+			<p:selectBooleanCheckbox style="margin-left:8%" />
+			<h:outputText style="margin-left:10%" value="1 Prova: " />
+			<p:selectBooleanCheckbox style="margin-left:8%" />
 			<p />
-			<h:outputText value="2 Prova: " />
-			<p:selectBooleanCheckbox value="" />
+			<h:outputText style="margin-left:4%" value="2 Prova: " />
+			<p:selectBooleanCheckbox style="margin-left:8%" />
+			<h:outputText style="margin-left:10%" value="2 Prova: " />
+			<p:selectBooleanCheckbox style="margin-left:8%" />
+			<h:outputText style="margin-left:10%" value="2 Prova: " />
+			<p:selectBooleanCheckbox style="margin-left:8%" />
+			<h:outputText style="margin-left:10%" value="2 Prova: " />
+			<p:selectBooleanCheckbox style="margin-left:8%" />
 			<p />
-			<h:outputText value="3 Prova: " />
-			<p:selectBooleanCheckbox value="" />
+			<h:outputText style="margin-left:4%" value="3 Prova: " />
+			<p:selectBooleanCheckbox style="margin-left:8%" />
+			<h:outputText style="margin-left:10%" value="3 Prova: " />
+			<p:selectBooleanCheckbox style="margin-left:8%" />
+			<h:outputText style="margin-left:10%" value="3 Prova: " />
+			<p:selectBooleanCheckbox style="margin-left:8%" />
+			<h:outputText style="margin-left:10%" value="3 Prova: " />
+			<p:selectBooleanCheckbox style="margin-left:8%" />
 			<p />
-			<h:outputText value="Trabalho Bimestral: " />
-			<p:selectBooleanCheckbox value="" />
+			<h:outputText style="margin-left:4%" value="Trabalho Bimestral: " />
+			<p:selectBooleanCheckbox style="margin-left:0.5%" />
+			<h:outputText style="margin-left:10%" value="Trabalho Bimestral: " />
+			<p:selectBooleanCheckbox style="margin-left: 0.5%" />
+			<h:outputText style="margin-left:10%" value="Trabalho Bimestral: " />
+			<p:selectBooleanCheckbox style="margin-left: 0.5%" />
+			<h:outputText style="margin-left:10%" value="Trabalho Bimestral: " />
+			<p:selectBooleanCheckbox style="margin-left: 0.5%" />
 			<p /> 
-			<h:outputText value="Exercício Avaliativo: " />
-			<p:selectBooleanCheckbox value="" />
+			<h:outputText style="margin-left:4%" value="Exercício Avaliativo: " />
+			<p:selectBooleanCheckbox />
+			<h:outputText style="margin-left:10%" value="Exercício Avaliativo: " />
+			<p:selectBooleanCheckbox style="margin-left:0.1%" />
+			<h:outputText style="margin-left:10%" value="Exercício Avaliativo: " />
+			<p:selectBooleanCheckbox style="margin-left:0.1%" />
+			<h:outputText style="margin-left:10%" value="Exercício Avaliativo: " />
+			<p:selectBooleanCheckbox style="margin-left:0.1%" />
+			<p />
+			<br />
+				<p:button  style="margin-left:40%" value="Salvar" actionListener=""/>	
+				<p:button style="margin-left:2%" value="Voltar" actionListener=""/>	
+				<p />
 			</p:panel>
 		</div>
 	</h:form>

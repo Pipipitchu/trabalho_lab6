@@ -15,7 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
 abstract class GenericDAO<T> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("JSFCrudPU");
+	private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("bd_escolarPU");
 	private EntityManager em;
 
 	private Class<T> entityClass;

@@ -18,11 +18,11 @@ body {
 				<p:growl id="messages" />
 
 		<p:menubar>
-			<p:menuitem value="Página Inicial" url="#" />
+			<p:menuitem value="Página Inicial" url="paginaPrincipal.xhtml" />
 
 			<p:submenu style="margin-left:1%" label="Administração">
-				<p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
-				<p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Cadastro de Alunos" url="cadastroAluno.xhtml"  />
+				<p:menuitem value="Cadastro de Professores" url="cadastroProfessor.xhtml"  />
 			</p:submenu>
 
 			<p:menuitem style="margin-left:7%" value="Lançar Notas" url="#" />
@@ -33,7 +33,7 @@ body {
 			</p:submenu>
 
 			<p:menuitem style="margin-left:5%" value="Agendamento de Eventos"
-				url="#" />
+				url="agendarEventos.xhtml" />
 
 			<p:menuitem style="margin-left:7%" value="Alterar Senha" url="#" />
 
@@ -47,10 +47,9 @@ body {
 			<p:panel header="Cadastro de Aluno" style="display:block; ">
 				<h:outputText value="Nome: " />
 				<p:inputText id="nome" style="width:70%" />
-
 				<h:outputLabel style="margin-left:3%;" value="Sexo: " />
-				<h:selectOneMenu id="sexo" required="true">
-					<f:selectItem itemLabel="--Escolha o Sexo--" itemValue=""
+				<h:selectOneMenu id="sexo">
+					<f:selectItem itemLabel="--Escolha o Sexo--" 
 						noSelectionOption="true" />
 					<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 					<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
@@ -64,7 +63,7 @@ body {
 				<h:outputText value="Cidade Natal: " />
 				<p:inputText id="cidade" style="width:65.5%" />
 				<h:outputLabel style="margin-left:3%;" value="UF: " />
-				<h:selectOneMenu id="uf" required="true">
+				<h:selectOneMenu id="uf">
 					<f:selectItem itemLabel="--Escolha o Estado--" itemValue=""
 						noSelectionOption="true" />
 						<f:selectItem itemLabel="Não-Brasileiro" itemValue="nbrasileiro" />
@@ -73,12 +72,12 @@ body {
 				<h:outputText value="País: " />
 				<p:inputText id="pais" style="width:40%" />
 				<h:outputText style="margin-left:3%" value="Intercâmbio: " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<h:outputText style="margin-left:3%" value="Tempo Intercâmbio: " />
-				<p:inputText id="cidade" style="width:4%" />
-				<h:outputText style="margin-left:3%" value="" />
-				<h:selectOneMenu id="tempo" required="true">
-					<f:selectItem style="margin-left: 3%" itemLabel="--Escolha o Tempo--" itemValue=""
+				<p:inputText id="tem_inter" style="width:4%" />
+				<h:outputText style="margin-left:3%" />
+				<h:selectOneMenu id="tempo">
+					<f:selectItem style="margin-left: 3%" itemLabel="--Escolha o Tempo--"
 						noSelectionOption="true" />
 						<f:selectItem itemLabel="Mês" itemValue="mes" />
 						<f:selectItem itemLabel="Bimestre" itemValue="bimestre" />
@@ -87,57 +86,57 @@ body {
 				</h:selectOneMenu>
 				<p />
 				<h:outputText value="Bolsista: " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<h:outputText style="margin-left:3%" value="Valor da bolsa: " />
 				<p:inputMask style="width:14%" id="vbolsa"  mask="R$ 9999,99"/>
 				<h:outputText style="margin-left:3%" value="FIES: " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<h:outputText style="margin-left:3%" value="P. Necess. Especiais: " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<h:outputText style="margin-left:3%" value="Qual? : " />
 				<p:inputText id="nespeciais" style="width:25.5%" />
 				<p />
 				<h:outputText value="Ano que irá cursar: " />
-				<h:selectOneMenu id="cursar" required="true">
+				<h:selectOneMenu id="cursar">
 					<f:selectItem style="margin-left: 3%" itemLabel="--Escolha o Ano--" itemValue=""
 						noSelectionOption="true" />
 				</h:selectOneMenu>
 				<h:outputText style="margin-left:3%" value="Repetente: " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<h:outputText style="margin-left:3%" value="Qtd. de Reprovações: " />
 				<p:inputText id="reprovacoes" style="width:4%" />
 				<h:outputText style="margin-left:3%" value="Transferido: " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<p />
 				<p />
 				<h:outputText value="Disciplinas que irá cursar: " />
 				<p />
 				<h:outputText value="Português: " />
-				<p:selectBooleanCheckbox style="margin-left:1%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:1%" />
 				<h:outputText style="margin-left:5%" value="Informática: " />
-				<p:selectBooleanCheckbox style="margin-left:1.4%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:1.4%" />
 				<p />
 				<h:outputText value="Matemática: " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<h:outputText style="margin-left:5%" value="Ed. Física: " />
-				<p:selectBooleanCheckbox style="margin-left:2.2%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:2.2%" />
 				<p />
 				<h:outputText value="História: " />
-				<p:selectBooleanCheckbox style="margin-left:2.7%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:2.7%" />
 				<h:outputText style="margin-left:5%" value="Ed. Religiosa: " />
-				<p:selectBooleanCheckbox value="" />
+				<p:selectBooleanCheckbox />
 				<p />
 				<h:outputText value="Geografia: " />
-				<p:selectBooleanCheckbox style="margin-left:1.1%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:1.1%" />
 				<p />
 				<h:outputText value="Física: " />
-				<p:selectBooleanCheckbox style="margin-left:3.8%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:3.8%" />
 				<p />
 				<h:outputText value="Química: " />
-				<p:selectBooleanCheckbox style="margin-left:2.1%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:2.1%" />
 				<p />
 				<h:outputText value="Ciências: " />
-				<p:selectBooleanCheckbox style="margin-left:1.8%" value="" />
+				<p:selectBooleanCheckbox style="margin-left:1.8%" />
 				<p />
 				<p:button  style="margin-left:40%" value="Salvar" actionListener=""/>	
 				<p:button style="margin-left:2%" value="Voltar" actionListener=""/>	
