@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<style type="text/css">
+body {
+	background-image:
+		url('#{request.contextPath}/images/pagina_inicial.jpg');
+	background-size: 100%;
+}
+</style>
+	<title>Sistema de Controle Escolar - Página Inicial</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:growl id="messages" />
+
+		<p:menubar>
+			<p:menuitem value="Página Inicial" url="#" />
+
+			<p:submenu style="margin-left:1%" label="Administração">
+				<p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+			</p:submenu>
+
+			<p:menuitem style="margin-left:7%" value="Lançar Notas" url="#" />
+
+			<p:submenu style="margin-left:1%" label="Gerar Relatório">
+				<p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+			</p:submenu>
+
+			<p:menuitem style="margin-left:5%" value="Agendamento de Eventos"
+				url="#" />
+
+			<p:menuitem style="margin-left:7%" value="Alterar Senha" url="#" />
+
+			<f:facet name="options">
+				<p:commandButton value="Logout" icon="ui-icon-extlink" action="#{escolarBean.paginaLogin}" ajax="false"/>
+			</f:facet>
+		</p:menubar>
+		<p:separator />
+		<h3
+			style="margin-left: 85%; font-family: Verdana, 'Arial', 'Helvetica, sans-serif'; color: white; text-shadow: 2px 2px #000;">Bem
+			vindo(a)!</h3>
+	</h:form>
+</h:body>
+<footer>
+	<h3 style="margin-top:33%; margin-left:56.5%;font-family: Verdana, 'Arial', 'Helvetica, sans-serif'; color: black;">"Eduquem
+		as crianças e não será necessário castigar os homens."</h3>
+	<h4 style="margin-top:1%; margin-left:70%; font-family: Verdana, 'Arial', 'Helvetica, sans-serif'; color: black;">Pitágoras, 582 a.C à 497 a.C</h4>
+</footer>
+</html>

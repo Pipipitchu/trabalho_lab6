@@ -1,0 +1,95 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<style type="text/css">
+body {
+	background-image:
+		url('#{request.contextPath}/images/pagina_inicial.jpg');
+	background-size: 100%;
+}
+</style>
+	<title>Sistema de Controle Escolar - Agendar Eventos</title>
+</h:head>
+<h:body>
+	<h:form>
+	<p:growl id="messages" />
+
+		<p:menubar>
+			<p:menuitem value="Página Inicial" url="#" />
+
+			<p:submenu style="margin-left:1%" label="Administração">
+				<p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+			</p:submenu>
+
+			<p:menuitem style="margin-left:7%" value="Lançar Notas" url="#" />
+
+			<p:submenu style="margin-left:1%" label="Gerar Relatório">
+				<p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+			</p:submenu>
+
+			<p:menuitem style="margin-left:5%" value="Agendamento de Eventos"
+				url="#" />
+
+			<p:menuitem style="margin-left:7%" value="Alterar Senha" url="#" />
+
+			<f:facet name="options">
+				<p:commandButton value="Logout" icon="ui-icon-extlink" action="#{escolarBean.paginaLogin}" ajax="false"/>
+			</f:facet>
+		</p:menubar>
+		<p:separator />
+		
+		<div
+			style="display: block; margin-top: 1%; margin-left: 5%; width: 90%;">
+			<p:panel header="Agendar Eventos" style="display:block; ">
+				<h:outputLabel value="Selecione a turma: " />
+				<h:selectOneMenu id="turma" required="true">
+					<f:selectItem itemLabel="1 Ano" itemValue="1ano" />
+					<f:selectItem itemLabel="2 Ano" itemValue="2ano" />
+					<f:selectItem itemLabel="2 Ano" itemValue="3ano" />
+					<f:selectItem itemLabel="4 Ano" itemValue="4ano" />
+					<f:selectItem itemLabel="5 Ano" itemValue="5ano" />
+					<f:selectItem itemLabel="6 Ano" itemValue="6ano" />
+					<f:selectItem itemLabel="7 Ano" itemValue="7ano" />
+					<f:selectItem itemLabel="8 Ano" itemValue="8ano" />
+					<f:selectItem itemLabel="9 Ano" itemValue="9ano" />
+					<f:selectItem itemLabel="1 Colegial" itemValue="1col" />
+					<f:selectItem itemLabel="2 Colegial" itemValue="2col" />
+					<f:selectItem itemLabel="3 Colegial" itemValue="3col" />
+				</h:selectOneMenu>
+				<p />
+				<h:outputText value="Alunos Específicos: " />
+				<p:selectBooleanCheckbox value="" />
+				<p />
+				<h:outputText value="Selecione o Aluno: " />
+				<h:selectOneMenu id="aluno" required="true">
+					<f:selectItem itemLabel="Igor augusto Nascimento Silva" itemValue="igor" />
+					<f:selectItem itemLabel="Natália Medeiros Campos" itemValue="natalia" />
+				</h:selectOneMenu>
+				<p />
+				<p />
+			<h:outputText style="margin-left:4%" value="Primeiro Bimestre : " />
+			<p />
+			<h:outputText value="1 Prova: " />
+			<p:selectBooleanCheckbox value="" />
+			<p />
+			<h:outputText value="2 Prova: " />
+			<p:selectBooleanCheckbox value="" />
+			<p />
+			<h:outputText value="3 Prova: " />
+			<p:selectBooleanCheckbox value="" />
+			<p />
+			<h:outputText value="Trabalho Bimestral: " />
+			<p:selectBooleanCheckbox value="" />
+			<p /> 
+			<h:outputText value="Exercício Avaliativo: " />
+			<p:selectBooleanCheckbox value="" />
+			</p:panel>
+		</div>
+	</h:form>
+</h:body>
+</html>

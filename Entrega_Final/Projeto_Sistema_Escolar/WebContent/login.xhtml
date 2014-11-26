@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Sistema de Controle Escolar - Login</title>
+</h:head>
+<style type="text/css">
+    body {background-image:url('#{request.contextPath}/images/login_image.jpg');
+    background-size:100%;}
+</style>
+<h:body>
+	<h:form>
+	<h1 style="margin-left:26%; margin-top:14%; 
+	font-family: Verdana, 'Arial', 'Helvetica, sans-serif';
+	color: white; font-size: 50px; text-shadow: 2px 2px #000;">Sistema de Controle Escolar</h1>
+		<div style="display:block; margin-top:1%; margin-left:37%; width:27%">
+			<p:panel header="Por favor, autentique-se!"
+				style="display:block; text-align:center">
+				<h:outputText value="Login: " />
+				<p:inputText id="login" style="width:75%" value="#{userTO.login}" />
+				<p />
+				<h:outputText value="Senha: " />
+				<p:password id="senha" style="width:73%"
+					value="#{userTO.password}" />
+				<p />
+				<p:commandButton value="Entrar" icon="ui-icon-extlink" action="#{escolarBean.paginaPrincipal}" ajax="false"/>			
+			</p:panel>
+		</div>
+	</h:form>
+</h:body>
+</html>
