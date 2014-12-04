@@ -15,7 +15,7 @@ body {
 </h:head>
 <h:body>
 	<h:form>
-				<p:growl id="messages" />
+	<p:growl id="messages" />
 
 		<p:menubar>
 			<p:menuitem value="Página Inicial" url="paginaPrincipal.xhtml" />
@@ -25,17 +25,18 @@ body {
 				<p:menuitem value="Cadastro de Professores" url="cadastroProfessor.xhtml"  />
 			</p:submenu>
 
-			<p:menuitem style="margin-left:7%" value="Lançar Notas" url="#" />
+				<p:menuitem style="margin-left:7%" value="Lançar Notas" url="lancarNotas.xhtml" />
 
 			<p:submenu style="margin-left:1%" label="Gerar Relatório">
-				<p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
-				<p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Alunos" url="relatorioAluno.xhtml" />
+				<p:menuitem value="Professores" url="relatorioProfessor.xhtml" />
+				<p:menuitem value="Turma" url="relatorioTurma.xhtml" />
 			</p:submenu>
 
 			<p:menuitem style="margin-left:5%" value="Agendamento de Eventos"
 				url="agendarEventos.xhtml" />
 
-			<p:menuitem style="margin-left:7%" value="Alterar Senha" url="#" />
+			<p:menuitem style="margin-left:7%" value="Alterar Senha" url="alterarSenha.xhtml" />
 
 			<f:facet name="options">
 				<p:commandButton value="Logout" icon="ui-icon-extlink" action="#{escolarBean.paginaLogin}" ajax="false"/>
@@ -46,9 +47,9 @@ body {
 			style="display: block; margin-top: 1%; margin-left: 5%; width: 90%;">
 			<p:panel header="Cadastro de Aluno" style="display:block; ">
 				<h:outputText value="Nome: " />
-				<p:inputText id="nome" style="width:70%" />
+				<p:inputText maxlength="78" id="nome" value="#{escolarBean.alunosTO.nome}" style="width:70%" requiredMessage="Preencha o campo nome!" required="true" />
 				<h:outputLabel style="margin-left:3%;" value="Sexo: " />
-				<h:selectOneMenu id="sexo">
+				<h:selectOneMenu id="sexo" value="#{escolarBean.alunosTO.sexo}">
 					<f:selectItem itemLabel="--Escolha o Sexo--" 
 						noSelectionOption="true" />
 					<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
@@ -56,27 +57,27 @@ body {
 				</h:selectOneMenu>
 				<p />
 				<h:outputText value="Idade: " />
-				<p:inputText id="idade" style="width:4%" />
+				<p:inputText id="idade" style="width:4%" maxlength="2" value="#{escolarBean.alunosTO.idade}" requiredMessage="Preencha o campo idade!" required="true" />
 				<h:outputText style="margin-left:3%" value="Nome da mãe: " />
-				<p:inputText id="mae" style="width:75%" />
+				<p:inputText id="mae" style="width:75%" maxlength="82" value="#{escolarBean.alunosTO.n_mae}" requiredMessage="Preencha o campo nome da mãe!" required="true"/>
 				<p />
 				<h:outputText value="Cidade Natal: " />
-				<p:inputText id="cidade" style="width:65.5%" />
+				<p:inputText id="cidade" style="width:65.5%" maxlength="73" value="#{escolarBean.alunosTO.cidade}" requiredMessage="Preencha o campo cidade!" required="true" />
 				<h:outputLabel style="margin-left:3%;" value="UF: " />
-				<h:selectOneMenu id="uf">
+				<h:selectOneMenu id="uf" value="#{escolarBean.alunosTO.estado}">
 					<f:selectItem itemLabel="--Escolha o Estado--" itemValue=""
 						noSelectionOption="true" />
 						<f:selectItem itemLabel="Não-Brasileiro" itemValue="nbrasileiro" />
 				</h:selectOneMenu>
 				<p />
 				<h:outputText value="País: " />
-				<p:inputText id="pais" style="width:40%" />
+				<p:inputText id="pais" maxlength="43" style="width:40%" value="#{escolarBean.alunosTO.pais}" requiredMessage="Preencha o campo país!" required="true" />
 				<h:outputText style="margin-left:3%" value="Intercâmbio: " />
-				<p:selectBooleanCheckbox />
+				<p:selectBooleanCheckbox value="#{escolarBean.alunosTO.intercambio}"/>
 				<h:outputText style="margin-left:3%" value="Tempo Intercâmbio: " />
-				<p:inputText id="tem_inter" style="width:4%" />
+				<p:inputText id="tem_inter" style="width:4%" maxlength="2" value="#{escolarBean.alunosTO.tempo_intercambio}" />
 				<h:outputText style="margin-left:3%" />
-				<h:selectOneMenu id="tempo">
+				<h:selectOneMenu id="tempo" value="#{escolarBean.alunosTO.qtd_tempo_intercambio}">
 					<f:selectItem style="margin-left: 3%" itemLabel="--Escolha o Tempo--"
 						noSelectionOption="true" />
 						<f:selectItem itemLabel="Mês" itemValue="mes" />
@@ -86,27 +87,39 @@ body {
 				</h:selectOneMenu>
 				<p />
 				<h:outputText value="Bolsista: " />
-				<p:selectBooleanCheckbox />
+				<p:selectBooleanCheckbox value="#{escolarBean.alunosTO.bolsista}"/>
 				<h:outputText style="margin-left:3%" value="Valor da bolsa: " />
-				<p:inputMask style="width:14%" id="vbolsa"  mask="R$ 9999,99"/>
+				<p:inputMask style="width:14%" value="#{escolarBean.alunosTO.v_bolsa}" id="vbolsa"  mask="R$ 9999,99"/>
 				<h:outputText style="margin-left:3%" value="FIES: " />
-				<p:selectBooleanCheckbox />
+				<p:selectBooleanCheckbox value="#{escolarBean.alunosTO.fies}"/>
 				<h:outputText style="margin-left:3%" value="P. Necess. Especiais: " />
-				<p:selectBooleanCheckbox />
+				<p:selectBooleanCheckbox value="#{escolarBean.alunosTO.pne}"/>
 				<h:outputText style="margin-left:3%" value="Qual? : " />
-				<p:inputText id="nespeciais" style="width:25.5%" />
+				<p:inputText id="nespeciais" maxlength="26" style="width:25.5%" value="#{escolarBean.alunosTO.qual_pne}"/>
 				<p />
 				<h:outputText value="Ano que irá cursar: " />
-				<h:selectOneMenu id="cursar">
-					<f:selectItem style="margin-left: 3%" itemLabel="--Escolha o Ano--" itemValue=""
+				<h:selectOneMenu id="cursar" value="#{escolarBean.alunosTO.ano}">
+					<f:selectItem style="margin-left: 3%" itemLabel="--Escolha o Ano--" 
 						noSelectionOption="true" />
+					<f:selectItem itemLabel="1 Ano" itemValue="1ano" />
+					<f:selectItem itemLabel="2 Ano" itemValue="2ano" />
+					<f:selectItem itemLabel="3 Ano" itemValue="3ano" />
+					<f:selectItem itemLabel="4 Ano" itemValue="4ano" />
+					<f:selectItem itemLabel="5 Ano" itemValue="5ano" />
+					<f:selectItem itemLabel="6 Ano" itemValue="6ano" />
+					<f:selectItem itemLabel="7 Ano" itemValue="7ano" />
+					<f:selectItem itemLabel="8 Ano" itemValue="8ano" />
+					<f:selectItem itemLabel="9 Ano" itemValue="9ano" />
+					<f:selectItem itemLabel="1 Colegial" itemValue="1col" />
+					<f:selectItem itemLabel="2 Colegial" itemValue="2col" />
+					<f:selectItem itemLabel="3 Colegial" itemValue="3col" />
 				</h:selectOneMenu>
 				<h:outputText style="margin-left:3%" value="Repetente: " />
-				<p:selectBooleanCheckbox />
+				<p:selectBooleanCheckbox value="#{escolarBean.alunosTO.repetente}"/>
 				<h:outputText style="margin-left:3%" value="Qtd. de Reprovações: " />
-				<p:inputText id="reprovacoes" style="width:4%" />
+				<p:inputText id="reprovacoes" maxlength="1" style="width:4%" value="#{escolarBean.alunosTO.qtd_rep}"/>
 				<h:outputText style="margin-left:3%" value="Transferido: " />
-				<p:selectBooleanCheckbox />
+				<p:selectBooleanCheckbox value="#{escolarBean.alunosTO.transferido}"/>
 				<p />
 				<p />
 				<h:outputText value="Disciplinas que irá cursar: " />
@@ -138,8 +151,8 @@ body {
 				<h:outputText value="Ciências: " />
 				<p:selectBooleanCheckbox style="margin-left:1.8%" />
 				<p />
-				<p:button  style="margin-left:40%" value="Salvar" actionListener=""/>	
-				<p:button style="margin-left:2%" value="Voltar" actionListener=""/>	
+				<p:commandButton  style="margin-left:40%" value="Salvar" actionListener="#{escolarBean.salvarAluno}" ajax="false" />	
+				<p:commandButton style="margin-left:2%" value="Voltar" action="#{escolarBean.paginaPrincipal}" ajax="false" />
 				<p />
 			</p:panel>
 		</div>

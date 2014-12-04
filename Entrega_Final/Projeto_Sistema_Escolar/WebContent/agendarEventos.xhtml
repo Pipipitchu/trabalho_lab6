@@ -25,17 +25,18 @@ body {
 				<p:menuitem value="Cadastro de Professores" url="cadastroProfessor.xhtml"  />
 			</p:submenu>
 
-			<p:menuitem style="margin-left:7%" value="Lançar Notas" url="#" />
+				<p:menuitem style="margin-left:7%" value="Lançar Notas" url="lancarNotas.xhtml" />
 
 			<p:submenu style="margin-left:1%" label="Gerar Relatório">
-				<p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
-				<p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Alunos" url="relatorioAluno.xhtml" />
+				<p:menuitem value="Professores" url="relatorioProfessor.xhtml" />
+				<p:menuitem value="Turma" url="relatorioTurma.xhtml" />
 			</p:submenu>
 
 			<p:menuitem style="margin-left:5%" value="Agendamento de Eventos"
 				url="agendarEventos.xhtml" />
 
-			<p:menuitem style="margin-left:7%" value="Alterar Senha" url="#" />
+			<p:menuitem style="margin-left:7%" value="Alterar Senha" url="alterarSenha.xhtml" />
 
 			<f:facet name="options">
 				<p:commandButton value="Logout" icon="ui-icon-extlink" action="#{escolarBean.paginaLogin}" ajax="false"/>
@@ -46,11 +47,14 @@ body {
 		<div
 			style="display: block; margin-top: 1%; margin-left: 5%; width: 90%;">
 			<p:panel header="Agendar Eventos" style="display:block; ">
+			<p:outputLabel for="effect" value="Selecione a Data: " />
+        	<p:calendar id="effect"  effect="fold" />
+        	<p />
 				<h:outputLabel value="Selecione a turma: " />
 				<h:selectOneMenu id="turma" required="true">
 					<f:selectItem itemLabel="1 Ano" itemValue="1ano" />
 					<f:selectItem itemLabel="2 Ano" itemValue="2ano" />
-					<f:selectItem itemLabel="2 Ano" itemValue="3ano" />
+					<f:selectItem itemLabel="3 Ano" itemValue="3ano" />
 					<f:selectItem itemLabel="4 Ano" itemValue="4ano" />
 					<f:selectItem itemLabel="5 Ano" itemValue="5ano" />
 					<f:selectItem itemLabel="6 Ano" itemValue="6ano" />
@@ -124,7 +128,7 @@ body {
 			<p />
 			<br />
 				<p:button  style="margin-left:40%" value="Salvar" actionListener=""/>	
-				<p:button style="margin-left:2%" value="Voltar" actionListener=""/>	
+				<p:commandButton style="margin-left:2%" value="Voltar" action="#{escolarBean.paginaPrincipal}" ajax="false" />	
 				<p />
 			</p:panel>
 		</div>

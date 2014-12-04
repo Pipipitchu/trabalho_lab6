@@ -1,21 +1,17 @@
 package br.edu.univas.si6.projeto_escolar.model.dao;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.persistence.EntityManager;
 
-import br.edu.univas.si6.projeto_escolar.model.to.ProfessoresTO;
+import br.edu.univas.si6.projeto_escolar.model.to.Professores;
 
-public class ProfessoresDAO extends GenericDAO<ProfessoresTO> {
+public class ProfessoresDAO extends GenericDAO<Professores, Integer> {
 
-	private static final long serialVersionUID = 1L;
-
-	public ProfessoresDAO() {
-		super(ProfessoresTO.class);
+	public ProfessoresDAO(EntityManager em) {
+		super(em);
 	}
-	public ProfessoresTO LocalizarNome(String nome) {
-		Map<String, Object> parametros=new HashMap<String, Object>();
-		parametros.put("nome", nome);
-		
-		return super.findOneResult(ProfessoresTO.LOCALIZAR_NOME, parametros);
+	
+	public void salvar(Professores professor){
+		super.salvar(professor);
 	}
+
 }

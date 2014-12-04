@@ -25,17 +25,18 @@ body {
 				<p:menuitem value="Cadastro de Professores" url="cadastroProfessor.xhtml"  />
 			</p:submenu>
 
-			<p:menuitem style="margin-left:7%" value="Lançar Notas" url="#" />
+			<p:menuitem style="margin-left:7%" value="Lançar Notas" url="lancarNotas.xhtml" />
 
 			<p:submenu style="margin-left:1%" label="Gerar Relatório">
-				<p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
-				<p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Alunos" url="relatorioAluno.xhtml" />
+				<p:menuitem value="Professores" url="relatorioProfessor.xhtml" />
+				<p:menuitem value="Turma" url="relatorioTurma.xhtml" />
 			</p:submenu>
 
 			<p:menuitem style="margin-left:5%" value="Agendamento de Eventos"
 				url="agendarEventos.xhtml" />
 
-			<p:menuitem style="margin-left:7%" value="Alterar Senha" url="#" />
+			<p:menuitem style="margin-left:7%" value="Alterar Senha" url="alterarSenha.xhtml" />
 
 			<f:facet name="options">
 				<p:commandButton value="Logout" icon="ui-icon-extlink" action="#{escolarBean.paginaLogin}" ajax="false"/>

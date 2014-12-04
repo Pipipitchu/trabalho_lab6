@@ -1,0 +1,96 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<style type="text/css">
+body {
+	background-image:
+		url('#{request.contextPath}/images/pagina_inicial.jpg');
+	background-size: 100%;
+}
+</style>
+	<title>Sistema de Controle Escolar - Relatório de Alunos</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:growl id="messages" />
+
+		<p:menubar>
+			<p:menuitem value="Página Inicial" url="paginaPrincipal.xhtml" />
+
+			<p:submenu style="margin-left:1%" label="Administração">
+				<p:menuitem value="Cadastro de Alunos" url="cadastroAluno.xhtml" />
+				<p:menuitem value="Cadastro de Professores"
+					url="cadastroProfessor.xhtml" />
+			</p:submenu>
+
+				<p:menuitem style="margin-left:7%" value="Lançar Notas" url="lancarNotas.xhtml" />
+
+			<p:submenu style="margin-left:1%" label="Gerar Relatório">
+				<p:menuitem value="Alunos" url="relatorioAluno.xhtml" />
+				<p:menuitem value="Professores" url="relatorioProfessor.xhtml" />
+				<p:menuitem value="Turma" url="relatorioTurma.xhtml" />
+			</p:submenu>
+			
+			<p:menuitem style="margin-left:5%" value="Agendamento de Eventos"
+				url="agendarEventos.xhtml" />
+
+			<p:menuitem style="margin-left:7%" value="Alterar Senha" url="alterarSenha.xhtml" />
+
+			<f:facet name="options">
+				<p:commandButton value="Logout" icon="ui-icon-extlink"
+					action="#{escolarBean.paginaLogin}" ajax="false" />
+			</f:facet>
+		</p:menubar>
+		<p:separator />
+
+		<div
+			style="display: block; margin-top: 1%; margin-left: 5%; width: 90%;">
+			<p:panel header="Relatório de Alunos" style="display:block; ">
+			
+			<h:outputLabel value="Selecione o Ano: " />
+				<h:selectOneMenu id="ano" required="true">
+				<f:selectItem itemLabel="2014" itemValue="2014" />
+			</h:selectOneMenu>
+			<p />
+			<h:outputLabel value="Selecione a turma: " />
+				<h:selectOneMenu id="turma" required="true">
+					<f:selectItem itemLabel="1 Ano" itemValue="1ano" />
+					<f:selectItem itemLabel="2 Ano" itemValue="2ano" />
+					<f:selectItem itemLabel="3 Ano" itemValue="3ano" />
+					<f:selectItem itemLabel="4 Ano" itemValue="4ano" />
+					<f:selectItem itemLabel="5 Ano" itemValue="5ano" />
+					<f:selectItem itemLabel="6 Ano" itemValue="6ano" />
+					<f:selectItem itemLabel="7 Ano" itemValue="7ano" />
+					<f:selectItem itemLabel="8 Ano" itemValue="8ano" />
+					<f:selectItem itemLabel="9 Ano" itemValue="9ano" />
+					<f:selectItem itemLabel="1 Colegial" itemValue="1col" />
+					<f:selectItem itemLabel="2 Colegial" itemValue="2col" />
+					<f:selectItem itemLabel="3 Colegial" itemValue="3col" />
+				</h:selectOneMenu>
+				<p />
+				<h:outputLabel value="Selecione o bimestre: " />
+				<h:selectOneMenu id="bimestre" required="true">
+					<f:selectItem itemLabel="1 Bimestre" itemValue="1bim" />
+					<f:selectItem itemLabel="2 Bimestre" itemValue="2bim" />
+					<f:selectItem itemLabel="3 Bimestre" itemValue="3bim" />
+					<f:selectItem itemLabel="4 Bimestre" itemValue="4bim" />
+				</h:selectOneMenu>
+				<p />
+				<h:outputLabel value="Selecione o aluno: " />
+				<h:selectOneMenu id="aluno" required="true">
+					<f:selectItem style="margin-left: 3%" itemLabel="--Nenhum--"
+						noSelectionOption="true" />
+				</h:selectOneMenu>
+				<p />
+				<br />
+				<p:button  style="margin-left:40%" value="Gerar" actionListener=""/>	
+				<p:commandButton style="margin-left:2%" value="Voltar" action="#{escolarBean.paginaPrincipal}" ajax="false" />
+				<p />
+			</p:panel>
+		</div>
+	</h:form>
+</h:body>
+</html>

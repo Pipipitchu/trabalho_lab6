@@ -25,17 +25,18 @@ body {
 				<p:menuitem value="Cadastro de Professores" url="cadastroProfessor.xhtml"  />
 			</p:submenu>
 
-			<p:menuitem style="margin-left:7%" value="Lançar Notas" url="#" />
+			<p:menuitem style="margin-left:7%" value="Lançar Notas" url="lancarNotas.xhtml" />
 
-			<p:submenu style="margin-left:1%" label="Gerar Relatório">
-				<p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
-				<p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+		<p:submenu style="margin-left:1%" label="Gerar Relatório">
+				<p:menuitem value="Alunos" url="relatorioAluno.xhtml" />
+				<p:menuitem value="Professores" url="relatorioProfessor.xhtml" />
+				<p:menuitem value="Turma" url="relatorioTurma.xhtml" />
 			</p:submenu>
 
 			<p:menuitem style="margin-left:5%" value="Agendamento de Eventos"
 				url="agendarEventos.xhtml" />
 
-			<p:menuitem style="margin-left:7%" value="Alterar Senha" url="#" />
+			<p:menuitem style="margin-left:7%" value="Alterar Senha" url="alterarSenha.xhtml" />
 
 			<f:facet name="options">
 				<p:commandButton value="Logout" icon="ui-icon-extlink" action="#{escolarBean.paginaLogin}" ajax="false"/>
@@ -47,28 +48,28 @@ body {
 			<p:panel header="Cadastro de Professor" style="display:block; ">
 			
 			<h:outputText value="Nome: " />
-				<p:inputText id="nome" style="width:70%" />
+				<p:inputText id="nome" style="width:70%" maxlength="78" value="#{escolarBean.professoresTO.nome}" requiredMessage="Preencha o campo nome!" required="true" />
 
 				<h:outputLabel style="margin-left:3%;" value="Sexo: " />
-				<h:selectOneMenu id="sexo" >
+				<h:selectOneMenu id="sexo" value="#{escolarBean.professoresTO.sexo}" >
 					<f:selectItem itemLabel="--Escolha o Sexo--" noSelectionOption="true" />
 					<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 					<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
 				</h:selectOneMenu>
 				<p />
 				<h:outputText value="Idade: " />
-				<p:inputText id="idade" style="width:4%" />
+				<p:inputText id="idade" style="width:4%" maxlength="2" value="#{escolarBean.professoresTO.idade}" requiredMessage="Preencha o campo idade!" required="true" />
 				<h:outputText style="margin-left:3%" value="Cidade Natal: " />
-				<p:inputText id="cidade" style="width:53.6%" />
+				<p:inputText id="cidade" style="width:53.6%" maxlength="55" value="#{escolarBean.professoresTO.cidade}" requiredMessage="Preencha o campo cidade!" required="true" />
 				<h:outputLabel style="margin-left:3%;" value="UF: " />
-				<h:selectOneMenu id="uf">
+				<h:selectOneMenu id="uf" value="#{escolarBean.professoresTO.estado}">
 					<f:selectItem itemLabel="--Escolha o Estado--" 
 						noSelectionOption="true" />
 						<f:selectItem itemLabel="Não-Brasileiro" itemValue="nbrasileiro" />
 				</h:selectOneMenu>
 				<p />
 				<h:outputText value="Estado Civil: " />
-				<h:selectOneMenu id="estcivil">
+				<h:selectOneMenu id="estcivil" value="#{escolarBean.professoresTO.estado_civil}">
 					<f:selectItem itemLabel="Solteiro(a)" itemValue="solteiro" />
 					<f:selectItem itemLabel="Amaziado(a)" itemValue="amaziado" />
 					<f:selectItem itemLabel="Casado(a)" itemValue="casado" />
@@ -76,7 +77,7 @@ body {
 					<f:selectItem itemLabel="Viúvo(a)" itemValue="viuvo" />
 				</h:selectOneMenu>
 				<h:outputText style="margin-left:12%;" value="Grau de Instrução: " />
-				<h:selectOneMenu id="grauinst">
+				<h:selectOneMenu id="grauinst" value="#{escolarBean.professoresTO.grauDeInstrucao}">
 				<f:selectItem itemLabel="-- Selecione o grau de instrução --" 
 						noSelectionOption="true" />
 					<f:selectItem itemLabel="Segundo Grau Incompleto" itemValue="seginc" />
@@ -86,13 +87,13 @@ body {
 					<f:selectItem itemLabel="Graduado(a)" itemValue="graduado" />
 				</h:selectOneMenu>
 				<h:outputText style="margin-left:13%;" value="Especialização: " />
-				<p:selectBooleanCheckbox />
+				<p:selectBooleanCheckbox value="#{escolarBean.professoresTO.especializacao}" />
 				<p />
 				<h:outputText value="Última Instituição de Ensino: " />
-				<p:inputText id="ultimainst" style="width:77.8%" />
+				<p:inputText id="ultimainst" style="width:77.8%" maxlength="87" value="#{escolarBean.professoresTO.ultima_inst}"/>
 				<p />
 				<h:outputText value="Titulação: " />
-				<h:selectOneMenu id="titulacao" >
+				<h:selectOneMenu id="titulacao" value="#{escolarBean.professoresTO.titulacao}">
 				<f:selectItem itemLabel="-- Selecione a titulação --" 
 						noSelectionOption="true" />
 					<f:selectItem itemLabel="Pós-Graduado" itemValue="posgrad" />
@@ -101,14 +102,14 @@ body {
 					<f:selectItem itemLabel="Pós-Doutorado" itemValue="posdout" />
 				</h:selectOneMenu>
 				<h:outputText style="margin-left:3%;" value="Área: " />
-				<p:inputText id="areatitula" style="width: 63.8%" />
+				<p:inputText id="areatitula" style="width: 63.8%" maxlength="71" value="#{escolarBean.professoresTO.area}"/>
 				<p />
 				<h:outputText value="Nome da Instituição: " />
-				<p:inputText id="nomeinstituicao" style="width:83.2%" />
+				<p:inputText id="nomeinstituicao" style="width:83.2%" maxlength="94" value="#{escolarBean.professoresTO.area_inst}"/>
 				<p />
 				<p />
 				<h:outputText value="Disciplinas que irá ministrar: " />
-				<h:outputText style="margin-left:45%;" value="Grade de Ensino: " />
+				<h:outputText style="margin-left:45%;" value="Grade de Ensino: "/>
 				<p />
 				<h:outputText value="Português: " />
 				<p:selectBooleanCheckbox style="margin-left:1%" />
@@ -161,8 +162,8 @@ body {
 				<h:outputText value="Ciências: " />
 				<p:selectBooleanCheckbox style="margin-left:1.8%" />
 				<p />
-				<p:button  style="margin-left:40%" value="Salvar" actionListener=""/>	
-				<p:button style="margin-left:2%" value="Voltar" actionListener=""/>	
+				<p:commandButton  style="margin-left:40%" value="Salvar" actionListener="#{escolarBean.salvarProfessor}" ajax="false"/>	
+				<p:commandButton style="margin-left:2%" value="Voltar" action="#{escolarBean.paginaPrincipal}" ajax="false"/>	
 				<p />
 		</p:panel>
 		</div>

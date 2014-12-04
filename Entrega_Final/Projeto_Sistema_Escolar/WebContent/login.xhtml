@@ -19,13 +19,13 @@
 			<p:panel header="Por favor, autentique-se!"
 				style="display:block; text-align:center">
 				<h:outputText value="Login: " />
-				<p:inputText id="login" style="width:75%" value="#{userTO.login}" />
+				<p:inputText id="login" maxlength="20" style="width:75%" value="#{escolarBean.userTO.nome}" required="true" />
 				<p />
 				<h:outputText value="Senha: " />
-				<p:password id="senha" style="width:73%"
-					value="#{userTO.password}" />
+				<p:password id="senha" maxlength="20" style="width:73%"
+					value="#{escolarBean.userTO.senha}" required="true" />
 				<p />
-				<p:commandButton value="Entrar" icon="ui-icon-extlink" action="#{escolarBean.paginaPrincipal}" ajax="false"/>			
+				<p:commandButton value="Entrar" icon="ui-icon-extlink" action="#{escolarBean.verificaSenha}" ajax="false"/>			
 			</p:panel>
 		</div>
 	</h:form>
