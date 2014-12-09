@@ -1,24 +1,13 @@
 package br.edu.univas.si6.projeto_escolar.model.to;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="materias_incl")
 public class Materias_Incl {
 	@Id
-	@GeneratedValue ( strategy = GenerationType . SEQUENCE ,
-	generator ="seq_mat")
-
-	@SequenceGenerator ( name ="seq_mat",
-
-	 sequenceName ="SEQ_PROF",
-
-	 allocationSize =1)
 	private int cod;
 	private int m1;
 	private int m2;

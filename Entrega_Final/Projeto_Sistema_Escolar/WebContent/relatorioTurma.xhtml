@@ -31,7 +31,6 @@ body {
 
 			<p:submenu style="margin-left:1%" label="Gerar Relatório">
 				<p:menuitem value="Alunos" url="relatorioAluno.xhtml" />
-				<p:menuitem value="Professores" url="relatorioProfessor.xhtml" />
 				<p:menuitem value="Turma" url="relatorioTurma.xhtml" />
 			</p:submenu>
 
@@ -80,8 +79,13 @@ body {
 				</h:selectOneMenu>
 				<p />
 				<br /> 
-				<p:button  style="margin-left:40%" value="Gerar" actionListener=""/>	
+				<p:commandButton  style="margin-left:40%" value="Gerar" onclick="PF('dlg3').show();" />		
 				<p:commandButton style="margin-left:2%" value="Voltar" action="#{escolarBean.paginaPrincipal}" ajax="false" />
+				<p:dialog header="Gráfico da Turma" widgetVar="dlg3" showEffect="explode" hideEffect="explode" style="margin-top:10%;width:700px;height:600px">
+    				 <p:chart type="pie" model="#{graficoBean.pieModel1}" style="width:400px;height:300px">
+            			<p:ajax event="itemSelect" listener="#{graficoBean.itemSelect}" />
+        			</p:chart>
+				</p:dialog>
 			</p:panel>
 		</div>
 	</h:form>

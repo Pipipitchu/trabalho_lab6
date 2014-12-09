@@ -11,7 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="alunos")
-//@NamedQuery(name="AlunosTO.LocalizarNome",query="select nome from alunos as a where a.nome=:nome")
+
+
 public class Alunos {
 	
 public static final String LOCALIZAR_NOME = "AlunosTO.LocalizarNome";
@@ -41,7 +42,7 @@ public static final String LOCALIZAR_NOME = "AlunosTO.LocalizarNome";
 	private boolean repetente;
 	private int qtd_rep;
 	private boolean transferido;
-	private int Grade;
+	private int grade;
 	public int getCod() {
 		return cod;
 	}
@@ -164,11 +165,12 @@ public static final String LOCALIZAR_NOME = "AlunosTO.LocalizarNome";
 		this.transferido = transferido;
 	}
 	public int getGrade() {
-		return Grade;
+		return grade;
 	}
 	public void setGrade(int grade) {
-		Grade = grade;
+		this.grade = grade;
 	}
+	
 	
 	
 }

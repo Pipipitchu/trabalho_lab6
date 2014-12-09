@@ -29,7 +29,6 @@ body {
 
 			<p:submenu style="margin-left:1%" label="Gerar Relatório">
 				<p:menuitem value="Alunos" url="relatorioAluno.xhtml" />
-				<p:menuitem value="Professores" url="relatorioProfessor.xhtml" />
 				<p:menuitem value="Turma" url="relatorioTurma.xhtml" />
 			</p:submenu>
 
@@ -122,35 +121,7 @@ body {
 				<p:selectBooleanCheckbox value="#{escolarBean.alunosTO.transferido}"/>
 				<p />
 				<p />
-				<h:outputText value="Disciplinas que irá cursar: " />
-				<p />
-				<h:outputText value="Português: " />
-				<p:selectBooleanCheckbox style="margin-left:1%" />
-				<h:outputText style="margin-left:5%" value="Informática: " />
-				<p:selectBooleanCheckbox style="margin-left:1.4%" />
-				<p />
-				<h:outputText value="Matemática: " />
-				<p:selectBooleanCheckbox />
-				<h:outputText style="margin-left:5%" value="Ed. Física: " />
-				<p:selectBooleanCheckbox style="margin-left:2.2%" />
-				<p />
-				<h:outputText value="História: " />
-				<p:selectBooleanCheckbox style="margin-left:2.7%" />
-				<h:outputText style="margin-left:5%" value="Ed. Religiosa: " />
-				<p:selectBooleanCheckbox />
-				<p />
-				<h:outputText value="Geografia: " />
-				<p:selectBooleanCheckbox style="margin-left:1.1%" />
-				<p />
-				<h:outputText value="Física: " />
-				<p:selectBooleanCheckbox style="margin-left:3.8%" />
-				<p />
-				<h:outputText value="Química: " />
-				<p:selectBooleanCheckbox style="margin-left:2.1%" />
-				<p />
-				<h:outputText value="Ciências: " />
-				<p:selectBooleanCheckbox style="margin-left:1.8%" />
-				<p />
+				<br />
 				<p:commandButton  style="margin-left:40%" value="Salvar" actionListener="#{escolarBean.salvarAluno}" ajax="false" />	
 				<p:commandButton style="margin-left:2%" value="Voltar" action="#{escolarBean.paginaPrincipal}" ajax="false" />
 				<p />

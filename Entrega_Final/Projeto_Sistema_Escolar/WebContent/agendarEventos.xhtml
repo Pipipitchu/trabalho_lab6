@@ -11,124 +11,101 @@ body {
 	background-size: 100%;
 }
 </style>
-	<title>Sistema de Controle Escolar - Agendar Eventos</title>
+	<title>Sistema de Controle Escolar - Agendar eventosTO</title>
 </h:head>
 <h:body>
 	<h:form>
-	<p:growl id="messages" />
+		<p:growl id="messages" />
 
 		<p:menubar>
 			<p:menuitem value="Página Inicial" url="paginaPrincipal.xhtml" />
 
 			<p:submenu style="margin-left:1%" label="Administração">
-				<p:menuitem value="Cadastro de Alunos" url="cadastroAluno.xhtml"  />
-				<p:menuitem value="Cadastro de Professores" url="cadastroProfessor.xhtml"  />
+				<p:menuitem value="Cadastro de Alunos" url="cadastroAluno.xhtml" />
+				<p:menuitem value="Cadastro de Professores"
+					url="cadastroProfessor.xhtml" />
 			</p:submenu>
 
-				<p:menuitem style="margin-left:7%" value="Lançar Notas" url="lancarNotas.xhtml" />
+			<p:menuitem style="margin-left:7%" value="Lançar Notas"
+				url="lancarNotas.xhtml" />
 
 			<p:submenu style="margin-left:1%" label="Gerar Relatório">
 				<p:menuitem value="Alunos" url="relatorioAluno.xhtml" />
-				<p:menuitem value="Professores" url="relatorioProfessor.xhtml" />
 				<p:menuitem value="Turma" url="relatorioTurma.xhtml" />
 			</p:submenu>
 
 			<p:menuitem style="margin-left:5%" value="Agendamento de Eventos"
-				url="agendarEventos.xhtml" />
+				url="agendareventosTO.xhtml" />
 
-			<p:menuitem style="margin-left:7%" value="Alterar Senha" url="alterarSenha.xhtml" />
+			<p:menuitem style="margin-left:7%" value="Alterar Senha"
+				url="alterarSenha.xhtml" />
 
 			<f:facet name="options">
-				<p:commandButton value="Logout" icon="ui-icon-extlink" action="#{escolarBean.paginaLogin}" ajax="false"/>
+				<p:commandButton value="Logout" icon="ui-icon-extlink"
+					action="#{escolarBean.paginaLogin}" ajax="false" />
 			</f:facet>
 		</p:menubar>
 		<p:separator />
-		
+
 		<div
 			style="display: block; margin-top: 1%; margin-left: 5%; width: 90%;">
 			<p:panel header="Agendar Eventos" style="display:block; ">
-			<p:outputLabel for="effect" value="Selecione a Data: " />
-        	<p:calendar id="effect"  effect="fold" />
-        	<p />
+				<p:outputLabel for="effect" value="Selecione a Data: " />
+				<p:calendar id="effect" effect="fold"
+					value="#{escolarBean.eventosTO.data}" required="true"/>
+				<p />
 				<h:outputLabel value="Selecione a turma: " />
-				<h:selectOneMenu id="turma" required="true">
-					<f:selectItem itemLabel="1 Ano" itemValue="1ano" />
-					<f:selectItem itemLabel="2 Ano" itemValue="2ano" />
-					<f:selectItem itemLabel="3 Ano" itemValue="3ano" />
-					<f:selectItem itemLabel="4 Ano" itemValue="4ano" />
-					<f:selectItem itemLabel="5 Ano" itemValue="5ano" />
-					<f:selectItem itemLabel="6 Ano" itemValue="6ano" />
-					<f:selectItem itemLabel="7 Ano" itemValue="7ano" />
-					<f:selectItem itemLabel="8 Ano" itemValue="8ano" />
-					<f:selectItem itemLabel="9 Ano" itemValue="9ano" />
-					<f:selectItem itemLabel="1 Colegial" itemValue="1col" />
-					<f:selectItem itemLabel="2 Colegial" itemValue="2col" />
-					<f:selectItem itemLabel="3 Colegial" itemValue="3col" />
+				<h:selectOneMenu id="turma" required="true"
+					value="#{escolarBean.eventosTO.turma}">
+					<f:selectItem itemLabel="1 Ano" itemValue="1" />
+					<f:selectItem itemLabel="2 Ano" itemValue="2" />
+					<f:selectItem itemLabel="3 Ano" itemValue="3" />
+					<f:selectItem itemLabel="4 Ano" itemValue="4" />
+					<f:selectItem itemLabel="5 Ano" itemValue="5" />
+					<f:selectItem itemLabel="6 Ano" itemValue="6" />
+					<f:selectItem itemLabel="7 Ano" itemValue="7" />
+					<f:selectItem itemLabel="8 Ano" itemValue="8" />
+					<f:selectItem itemLabel="9 Ano" itemValue="9" />
+					<f:selectItem itemLabel="1 Colegial" itemValue="21" />
+					<f:selectItem itemLabel="2 Colegial" itemValue="22" />
+					<f:selectItem itemLabel="3 Colegial" itemValue="23" />
 				</h:selectOneMenu>
 				<p />
-				<h:outputText value="Alunos Específicos: " />
-				<p:selectBooleanCheckbox />
-				<p />
-				<h:outputText value="Selecione o Aluno: " />
-				<h:selectOneMenu id="aluno" required="true">
-					<f:selectItem itemLabel="Igor augusto Nascimento Silva" itemValue="igor" />
-					<f:selectItem itemLabel="Natália Medeiros Campos" itemValue="natalia" />
+				<h:outputLabel value="Selecione o Bimestre: " />
+				<h:selectOneMenu id="bimestre" required="true"
+					value="#{escolarBean.eventosTO.bimestre}">
+					<f:selectItem itemLabel="Primeiro Bimestre" itemValue="1" />
+					<f:selectItem itemLabel="Segundo Bimestre" itemValue="2" />
+					<f:selectItem itemLabel="Terceiro Bimestre" itemValue="3" />
+					<f:selectItem itemLabel="Quarto Bimestre" itemValue="4" />
 				</h:selectOneMenu>
 				<p />
 				<p />
-			<h:outputText style="margin-left:6%" value="Primeiro Bimestre : " />
-			<h:outputText style="margin-left:11%" value="Segundo Bimestre : " />
-			<h:outputText style="margin-left:13%" value="Terceiro Bimestre : " />
-			<h:outputText style="margin-left:12%" value="Quarto Bimestre : " />
-			<p />
-			<h:outputText style="margin-left:4%"  value="1 Prova: " />
-			<p:selectBooleanCheckbox style="margin-left:8%" />
-			<h:outputText style="margin-left:10%" value="1 Prova: " />
-			<p:selectBooleanCheckbox style="margin-left:8%" />
-			<h:outputText style="margin-left:10%" value="1 Prova: " />
-			<p:selectBooleanCheckbox style="margin-left:8%" />
-			<h:outputText style="margin-left:10%" value="1 Prova: " />
-			<p:selectBooleanCheckbox style="margin-left:8%" />
-			<p />
-			<h:outputText style="margin-left:4%" value="2 Prova: " />
-			<p:selectBooleanCheckbox style="margin-left:8%" />
-			<h:outputText style="margin-left:10%" value="2 Prova: " />
-			<p:selectBooleanCheckbox style="margin-left:8%" />
-			<h:outputText style="margin-left:10%" value="2 Prova: " />
-			<p:selectBooleanCheckbox style="margin-left:8%" />
-			<h:outputText style="margin-left:10%" value="2 Prova: " />
-			<p:selectBooleanCheckbox style="margin-left:8%" />
-			<p />
-			<h:outputText style="margin-left:4%" value="3 Prova: " />
-			<p:selectBooleanCheckbox style="margin-left:8%" />
-			<h:outputText style="margin-left:10%" value="3 Prova: " />
-			<p:selectBooleanCheckbox style="margin-left:8%" />
-			<h:outputText style="margin-left:10%" value="3 Prova: " />
-			<p:selectBooleanCheckbox style="margin-left:8%" />
-			<h:outputText style="margin-left:10%" value="3 Prova: " />
-			<p:selectBooleanCheckbox style="margin-left:8%" />
-			<p />
-			<h:outputText style="margin-left:4%" value="Trabalho Bimestral: " />
-			<p:selectBooleanCheckbox style="margin-left:0.5%" />
-			<h:outputText style="margin-left:10%" value="Trabalho Bimestral: " />
-			<p:selectBooleanCheckbox style="margin-left: 0.5%" />
-			<h:outputText style="margin-left:10%" value="Trabalho Bimestral: " />
-			<p:selectBooleanCheckbox style="margin-left: 0.5%" />
-			<h:outputText style="margin-left:10%" value="Trabalho Bimestral: " />
-			<p:selectBooleanCheckbox style="margin-left: 0.5%" />
-			<p /> 
-			<h:outputText style="margin-left:4%" value="Exercício Avaliativo: " />
-			<p:selectBooleanCheckbox />
-			<h:outputText style="margin-left:10%" value="Exercício Avaliativo: " />
-			<p:selectBooleanCheckbox style="margin-left:0.1%" />
-			<h:outputText style="margin-left:10%" value="Exercício Avaliativo: " />
-			<p:selectBooleanCheckbox style="margin-left:0.1%" />
-			<h:outputText style="margin-left:10%" value="Exercício Avaliativo: " />
-			<p:selectBooleanCheckbox style="margin-left:0.1%" />
-			<p />
-			<br />
-				<p:button  style="margin-left:40%" value="Salvar" actionListener=""/>	
-				<p:commandButton style="margin-left:2%" value="Voltar" action="#{escolarBean.paginaPrincipal}" ajax="false" />	
+				<br />
+				<h:outputText style="margin-left:4%" value="1 Prova: " />
+				<p:selectBooleanCheckbox style="margin-left:8%"
+					value="#{escolarBean.eventosTO.prova1}" />
+				<p />
+				<h:outputText style="margin-left:4%" value="2 Prova: " />
+				<p:selectBooleanCheckbox style="margin-left:8%"
+					value="#{escolarBean.eventosTO.prova2}" />
+				<p />
+				<h:outputText style="margin-left:4%" value="3 Prova: " />
+				<p:selectBooleanCheckbox style="margin-left:8%"
+					value="#{escolarBean.eventosTO.prova3}" />
+				<p />
+				<h:outputText style="margin-left:4%" value="Trabalho Bimestral: " />
+				<p:selectBooleanCheckbox style="margin-left:0.5%"
+					value="#{escolarBean.eventosTO.trabalho}" />
+				<p />
+				<h:outputText style="margin-left:4%" value="Exercício Avaliativo: " />
+				<p:selectBooleanCheckbox value="#{escolarBean.eventosTO.exercicio}" />
+				<p />
+				<br />
+				<p:commandButton style="margin-left:40%" value="Salvar"
+					actionListener="#{escolarBean.salvarEvento}" ajax="false" />
+				<p:commandButton style="margin-left:2%" value="Voltar"
+					action="#{escolarBean.paginaPrincipal}" ajax="false" />
 				<p />
 			</p:panel>
 		</div>

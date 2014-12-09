@@ -30,7 +30,6 @@ body {
 
 			<p:submenu style="margin-left:1%" label="Gerar Relatório">
 				<p:menuitem value="Alunos" url="relatorioAluno.xhtml" />
-				<p:menuitem value="Professores" url="relatorioProfessor.xhtml" />
 				<p:menuitem value="Turma" url="relatorioTurma.xhtml" />
 			</p:submenu>
 
@@ -49,13 +48,13 @@ body {
 		<div
 			style="display: block; margin-top: 1%; margin-left: 5%; width: 90%;">
 			<p:panel header="Lançar Notas" style="display:block; ">
-				<h:outputLabel value="Selecione o Ano: " />
-				<h:selectOneMenu id="ano" required="true">
+				<h:outputLabel value="Selecione o Ano: "  />
+				<h:selectOneMenu id="ano" value="#{escolarBean.lancarNotas.ano}" required="true">
 					<f:selectItem itemLabel="2014" itemValue="2014" />
 				</h:selectOneMenu>
 				<p />
 				<h:outputLabel value="Selecione a turma: " />
-				<h:selectOneMenu id="turma" required="true">
+				<h:selectOneMenu id="turma" value="#{escolarBean.lancarNotas.turma}" required="true">
 					<f:selectItem itemLabel="1 Ano" itemValue="1ano" />
 					<f:selectItem itemLabel="2 Ano" itemValue="2ano" />
 					<f:selectItem itemLabel="3 Ano" itemValue="3ano" />
@@ -71,15 +70,36 @@ body {
 				</h:selectOneMenu>
 				<p />
 				<h:outputLabel value="Selecione o bimestre: " />
-				<h:selectOneMenu id="bimestre" required="true">
+				<h:selectOneMenu id="bimestre" value="#{escolarBean.lancarNotas.bimestre}" required="true">
 					<f:selectItem itemLabel="1 Bimestre" itemValue="1bim" />
 					<f:selectItem itemLabel="2 Bimestre" itemValue="2bim" />
 					<f:selectItem itemLabel="3 Bimestre" itemValue="3bim" />
 					<f:selectItem itemLabel="4 Bimestre" itemValue="4bim" />
 				</h:selectOneMenu>
 				<p />
-
-		<p:dataTable id="materias" var="mater" value="#{escolarBean.materiaTO.nome}" scrollable="true">
+				<br />
+				<h:outputText style="margin-left:4%" value="1 Prova: " />
+				<p:selectBooleanCheckbox style="margin-left:8%"
+					value="#{escolarBean.lancarNotas.prova1}" />
+				<p />
+				<h:outputText style="margin-left:4%" value="2 Prova: " />
+				<p:selectBooleanCheckbox style="margin-left:8%"
+					value="#{escolarBean.lancarNotas.prova2}" />
+				<p />
+				<h:outputText style="margin-left:4%" value="3 Prova: " />
+				<p:selectBooleanCheckbox style="margin-left:8%"
+					value="#{escolarBean.lancarNotas.prova3}" />
+				<p />
+				<h:outputText style="margin-left:4%" value="Trabalho Bimestral: " />
+				<p:selectBooleanCheckbox style="margin-left:0.5%"
+					value="#{escolarBean.lancarNotas.trabalho}" />
+				<p />
+				<h:outputText style="margin-left:4%" value="Exercício Avaliativo: " />
+				<p:selectBooleanCheckbox value="#{escolarBean.lancarNotas.exercicio}" />
+				<p />
+				<br />
+				<p:commandButton style="margin-left:2%" value="Buscar" action="#{escolarBean.buscarAsNotas}" ajax="false" />
+		<!--  <p:dataTable id="materias" var="mater" value="#{escolarBean.materiaTO.nome}" scrollable="true">
 					<p:column headerText="Nome">
 					</p:column>
 
@@ -110,11 +130,10 @@ body {
 
 					<p:column headerText="Informática">
 					</p:column>
-				</p:dataTable>
+				</p:dataTable> -->
 				<p />
 				<br />
-				<p:button style="margin-left:36%" value="Salvar" actionListener="" />
-				<p:button style="margin-left:2%" value="Editar" actionListener="" />
+				<p:commandButton style="margin-left:2%" value="Salvar" ajax="false" />
 				<p:commandButton style="margin-left:2%" value="Voltar" action="#{escolarBean.paginaPrincipal}" ajax="false" />
 				<p />
 			</p:panel>

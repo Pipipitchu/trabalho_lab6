@@ -8,15 +8,15 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="grade_2")
-public class Grade_2 {
+@Table(name="grade")
+public class Grade {
 	@Id
 	@GeneratedValue ( strategy = GenerationType . SEQUENCE ,
-	generator ="seq_grade_2")
+	generator ="seq_grade")
 
-	@SequenceGenerator ( name ="seq_grade_2",
+	@SequenceGenerator ( name ="seq_grade",
 
-	 sequenceName ="SEQ_GRADE_2",
+	 sequenceName ="SEQ_GRADE",
 
 	 allocationSize =1)
 	private int cod;

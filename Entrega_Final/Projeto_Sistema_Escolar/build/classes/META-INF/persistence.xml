@@ -7,13 +7,13 @@
 	<persistence-unit name="PERSISTENCE_CTX_bd_escolar" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>br.edu.univas.si6.projeto_escolar.model.to.Alunos</class>
-		<class>br.edu.univas.si6.projeto_escolar.model.to.Grade_1</class>
-		<class>br.edu.univas.si6.projeto_escolar.model.to.Grade_2</class>
+		<class>br.edu.univas.si6.projeto_escolar.model.to.Grade</class>
 		<class>br.edu.univas.si6.projeto_escolar.model.to.Materias_Incl</class>
 		<class>br.edu.univas.si6.projeto_escolar.model.to.Materia</class>
-		<class>br.edu.univas.si6.projeto_escolar.model.to.Notas_1</class>
+		<class>br.edu.univas.si6.projeto_escolar.model.to.Notas</class>
 		<class>br.edu.univas.si6.projeto_escolar.model.to.Professores</class>
 		<class>br.edu.univas.si6.projeto_escolar.model.to.Usuarios</class>
+		<class>br.edu.univas.si6.projeto_escolar.model.to.Eventos</class>
 				<exclude-unlisted-classes>false</exclude-unlisted-classes>
 
 		<properties>

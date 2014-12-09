@@ -2,24 +2,27 @@ package br.edu.univas.si6.projeto_escolar.controller;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.persistence.EntityManager;
 
 import br.edu.univas.si6.projeto_escolar.model.dao.AlunosDAO;
+import br.edu.univas.si6.projeto_escolar.model.dao.EventosDAO;
 import br.edu.univas.si6.projeto_escolar.model.dao.ProfessoresDAO;
-import br.edu.univas.si6.projeto_escolar.model.dao.UsersDAO;
 import br.edu.univas.si6.projeto_escolar.model.dao.UsuariosDAO;
 import br.edu.univas.si6.projeto_escolar.model.to.Alunos;
+import br.edu.univas.si6.projeto_escolar.model.to.Eventos;
+import br.edu.univas.si6.projeto_escolar.model.to.LancarNotas;
 import br.edu.univas.si6.projeto_escolar.model.to.Materia;
 import br.edu.univas.si6.projeto_escolar.model.to.Professores;
-import br.edu.univas.si6.projeto_escolar.model.to.UserTO;
 import br.edu.univas.si6.projeto_escolar.model.to.Usuarios;
 import br.edu.univas.si6.projeto_escolar.orm.HibernateUtil;
 
 
 
 @ManagedBean
+@ViewScoped
 public class EscolarBean {
 	
 	private Alunos alunosTO;
@@ -28,10 +31,10 @@ public class EscolarBean {
 	private ProfessoresDAO professoresDAO;
 	private Materia materiaTO;
 	private Usuarios userTO;
+	private Eventos eventosTO;
+	private LancarNotas lancarNotas;
 	private UsuariosDAO usersDAO;
-	private UsuariosDAO userTestSenha;
-//	private ArrayList<AlunosTO> alunos;
-//	private ArrayList<ProfessoresTO> professores;
+	private EventosDAO eventosDAO;
 	private EntityManager em = HibernateUtil.getEntityManager();
 	
 	public EscolarBean() {
@@ -57,7 +60,10 @@ public class EscolarBean {
 		}
 		materiaTO = new Materia();
 		userTO = new Usuarios();
+		eventosTO = new Eventos();
+		lancarNotas = new LancarNotas();
 		usersDAO = new UsuariosDAO(em);
+		eventosDAO = new EventosDAO(em);
 	}
 	
 	public Alunos getAlunosTO() {
@@ -79,27 +85,11 @@ public class EscolarBean {
 
 	public void salvarAluno(ActionEvent actionEvent){
 		addMessage("Aluno salvo com sucesso!");
-		System.out.println("pra salvar:");
-		System.out.println(alunosTO.getCod());
-		System.out.println(alunosTO.getNome());
-		System.out.println(alunosTO.getSexo());
-		System.out.println(alunosTO.getIdade());
-		System.out.println(alunosTO.getN_mae());
-		System.out.println(alunosTO.getCidade());
-		System.out.println(alunosTO.getEstado());
-		System.out.println(alunosTO.getPais());
-		System.out.println(alunosTO.isIntercambio());
-		System.out.println(alunosTO.getTempo_intercambio());
-		System.out.println(alunosTO.getQtd_tempo_intercambio());
-		System.out.println(alunosTO.isBolsista());
-		System.out.println(alunosTO.getV_bolsa());
-		System.out.println(alunosTO.isFies());
-		System.out.println(alunosTO.isPne());
-		System.out.println(alunosTO.getQual_pne());
-		System.out.println(alunosTO.getAno());
-		System.out.println(alunosTO.isRepetente());
-		System.out.println(alunosTO.getQtd_rep());
-		System.out.println(alunosTO.isTransferido());
+		if(alunosTO.getAno().equals("1col") || alunosTO.getAno().equals("2col") || alunosTO.getAno().equals("3col")){
+			alunosTO.setGrade(2);
+		}else{
+			alunosTO.setGrade(1);
+		}
 		alunosDAO.salvar(alunosTO);
 		//resetando campos...
 		alunosTO.setNome(null);
@@ -125,18 +115,6 @@ public class EscolarBean {
 	
 	public void salvarProfessor(ActionEvent actionEvent){
 		addMessage("Professor salvo com sucesso!");
-		System.out.println(professoresTO.getNome());
-		System.out.println(professoresTO.getSexo());
-		System.out.println(professoresTO.getIdade());
-		System.out.println(professoresTO.getCidade());
-		System.out.println(professoresTO.getEstado_civil());
-		System.out.println(professoresTO.getEstado());
-		System.out.println(professoresTO.getGrauDeInstrucao());
-		System.out.println(professoresTO.isEspecializacao());
-		System.out.println(professoresTO.getUltima_inst());
-		System.out.println(professoresTO.getTitulacao());
-		System.out.println(professoresTO.getArea());
-		System.out.println(professoresTO.getArea_inst());
 		professoresDAO.salvar(professoresTO);
 		//resetando campos
 		professoresTO.setNome(null);
@@ -153,6 +131,27 @@ public class EscolarBean {
 		professoresTO.setArea_inst(null);
 	}
 	
+	public void salvarEvento(ActionEvent actionEvent){
+		addMessage("Evento salvo com sucesso!");
+		eventosDAO.salvar(eventosTO);
+		System.out.println(eventosTO.getData());
+		System.out.println(eventosTO.getTurma());
+		System.out.println(eventosTO.getBimestre());
+		System.out.println(eventosTO.isProva1());
+		System.out.println(eventosTO.isProva2());
+		System.out.println(eventosTO.isProva3());
+		System.out.println(eventosTO.isTrabalho());
+		System.out.println(eventosTO.isExercicio());
+		eventosTO.setData(null);
+		eventosTO.setTurma(null);
+		eventosTO.setBimestre(null);
+		eventosTO.setProva1(false);
+		eventosTO.setProva2(false);
+		eventosTO.setProva3(false);
+		eventosTO.setTrabalho(false);
+		eventosTO.setTrabalho(false);
+	}
+	
 	public Usuarios getUserTO() {
 		return userTO;
 	}
@@ -160,19 +159,51 @@ public class EscolarBean {
 	public void setUserTO(Usuarios userTO) {
 		this.userTO = userTO;
 	}
+	
+
+	public Eventos getEventosTO() {
+		return eventosTO;
+	}
+
+	public void setEventosTO(Eventos eventosTO) {
+		this.eventosTO = eventosTO;
+	}
 
 	public void alterarSenha(ActionEvent actionEvent){
 		
-		Usuarios teste=usersDAO.alteraUsuario(userTO.getCod(),userTO.getNome(),userTO.getSenha());
-		if(teste != null){
-			userTO.setCod(teste.getCod());
+		boolean teste=usersDAO.alteraUsuario(userTO.getNome(),userTO.getSenha());
+		if(teste != false){
+			userTO.setCod(usersDAO.procuraPorNome(userTO.getNome(),userTO.getSenha())); 
+			System.out.println("procurando por: "+userTO.getNome()+"cod: "+userTO.getCod());
+			userTO.setSenha(userTO.getNova_senha());
+			userTO.setNova_senha(null);
 			usersDAO.update(userTO);
 			addMessage("Senha alterada com sucesso!");
 		}else{
-			addErrorMessage("Usu�rio e/ou senha inv�lidos!");
+			addErrorMessage("Usuário e/ou senha inválidos!");
 		}
 	}
 	
+	public LancarNotas getLancarNotas() {
+		return lancarNotas;
+	}
+
+	public void setLancarNotas(LancarNotas lancarNotas) {
+		this.lancarNotas = lancarNotas;
+	}
+	
+	//Este método contém os valores do select para buscar as notas
+	public void buscarAsNotas() {
+		System.out.println(lancarNotas.getAno());
+		System.out.println(lancarNotas.getTurma());
+		System.out.println(lancarNotas.getBimestre());
+		System.out.println(lancarNotas.isProva1());
+		System.out.println(lancarNotas.isProva2());
+		System.out.println(lancarNotas.isProva3());
+		System.out.println(lancarNotas.isExercicio());
+		System.out.println(lancarNotas.isTrabalho());
+	}
+
 	private void addMessage(String summary) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary,  null);
         FacesContext.getCurrentInstance().addMessage(null, message);

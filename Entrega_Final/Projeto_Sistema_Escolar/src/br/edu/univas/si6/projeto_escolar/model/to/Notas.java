@@ -9,12 +9,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Notas_1")
+@Table(name="Notas")
 @IdClass(value=Notas_1PK.class)
-public class Notas_1 {
+public class Notas {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator ="seq_notas_1")
-	@SequenceGenerator ( name ="seq_notas_1",sequenceName ="SEQ_NOTAS_1",allocationSize =1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator ="seq_notas")
+	@SequenceGenerator ( name ="seq_notas",sequenceName ="SEQ_NOTAS",allocationSize =1)
 	private int cod;
 	@Id
 	private int bimestre;

@@ -24,19 +24,17 @@ public class UsuariosDAO extends GenericDAO<Usuarios, Integer> {
 			return true;
 		} 
 	}
-	private Usuarios encontrarUsuario2(int cod, String nome, String senha) {
+	private int encontrarUsuario2(int cod, String nome,String senha) {
 		Map<String, Object> parametros = new HashMap<String, Object>();
-		parametros.put("cod", cod);
+//		parametros.put("cod", cod);
 		parametros.put("nome", nome);
 		parametros.put("senha", senha);
-		Object object = super.encontra1Result(Usuarios.LOCALIZAR_NOME_E_SENHA,parametros);
-		if(object==null){
-			return null;
-		}else{
-			System.out.println("usuario encontrado!");
-			return (Usuarios)object;
-		} 
-
+		Object[] object = super.encontra1Result(Usuarios.LOCALIZAR_NOME_E_SENHA,parametros);
+		//debugar aqui valor do object[0] é o cod.
+		System.out.println(object[0]);
+		
+		int codr=Integer.parseInt(object[0].toString());
+		return codr;
 	}
 	public boolean verificaLogin(String nome,String senha ){
 		System.out.println("entrou em verifica login");
@@ -45,12 +43,20 @@ public class UsuariosDAO extends GenericDAO<Usuarios, Integer> {
 		boolean res = encontrarUsuario(nome, senha);
 		return res;
 	}
-	public Usuarios alteraUsuario(int cod, String nome,String senha){
+	public boolean alteraUsuario(String nome,String senha){
 		System.out.println("entrou em Alterar Usuario");
 		UsuariosDAO usuarioDAO = new UsuariosDAO(em);
+		System.out.println("usuarioDAO criado com sucesso");
 		System.out.println("endereco usuarioDAO: "+usuarioDAO);
-		Usuarios res = encontrarUsuario2(cod,nome, senha);
+		boolean res = encontrarUsuario(nome,senha);
+		System.out.println("encontrou usuario "+nome);
 		return res;
+	}
+	public int procuraPorNome(String nome,String senha){
+		System.out.println("procurando por nome...");
+		int cod=0;
+		cod=encontrarUsuario2(cod,nome,senha);
+		return cod;
 	}
 
 }

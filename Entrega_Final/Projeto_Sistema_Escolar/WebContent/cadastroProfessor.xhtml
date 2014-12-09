@@ -29,7 +29,6 @@ body {
 
 		<p:submenu style="margin-left:1%" label="Gerar Relatório">
 				<p:menuitem value="Alunos" url="relatorioAluno.xhtml" />
-				<p:menuitem value="Professores" url="relatorioProfessor.xhtml" />
 				<p:menuitem value="Turma" url="relatorioTurma.xhtml" />
 			</p:submenu>
 
@@ -107,61 +106,41 @@ body {
 				<h:outputText value="Nome da Instituição: " />
 				<p:inputText id="nomeinstituicao" style="width:83.2%" maxlength="94" value="#{escolarBean.professoresTO.area_inst}"/>
 				<p />
+				<h:outputText value="Selecione a matéria principal: " />
+				<h:selectOneMenu id="mprincipal" value="#{escolarBean.professoresTO.m_principal}">
+				<f:selectItem itemLabel="-- Lista de Matérias --" 
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="Português" itemValue="portugues" />
+					<f:selectItem itemLabel="Matemática" itemValue="matematica" />
+					<f:selectItem itemLabel="História" itemValue="historia" />
+					<f:selectItem itemLabel="Geografia" itemValue="geografia" />
+					<f:selectItem itemLabel="Física" itemValue="fisica" />
+					<f:selectItem itemLabel="Química" itemValue="quimica" />
+					<f:selectItem itemLabel="Ciências" itemValue="ciencias" />
+					<f:selectItem itemLabel="Informática" itemValue="Informática" />
+					<f:selectItem itemLabel="Ed. Física" itemValue="edfisica" />
+					<f:selectItem itemLabel="Ed. Religiosa" itemValue="edreligiosa" />
+				</h:selectOneMenu>
+				
+				<h:outputText style="margin-left:3%" value="Selecione a matéria secundária: " />
+				<h:selectOneMenu id="msecundaria" value="#{escolarBean.professoresTO.m_secundaria}">
+				<f:selectItem itemLabel="-- Lista de Matérias --" 
+						noSelectionOption="true" />
+						<f:selectItem itemLabel="Nenhuma" itemValue="nenhuma" />
+					<f:selectItem itemLabel="Português" itemValue="portugues" />
+					<f:selectItem itemLabel="Matemática" itemValue="matematica" />
+					<f:selectItem itemLabel="História" itemValue="historia" />
+					<f:selectItem itemLabel="Geografia" itemValue="geografia" />
+					<f:selectItem itemLabel="Física" itemValue="fisica" />
+					<f:selectItem itemLabel="Química" itemValue="quimica" />
+					<f:selectItem itemLabel="Ciências" itemValue="ciencias" />
+					<f:selectItem itemLabel="Informática" itemValue="Informática" />
+					<f:selectItem itemLabel="Ed. Física" itemValue="edfisica" />
+					<f:selectItem itemLabel="Ed. Religiosa" itemValue="edreligiosa" />
+				</h:selectOneMenu>
+				
 				<p />
-				<h:outputText value="Disciplinas que irá ministrar: " />
-				<h:outputText style="margin-left:45%;" value="Grade de Ensino: "/>
-				<p />
-				<h:outputText value="Português: " />
-				<p:selectBooleanCheckbox style="margin-left:1%" />
-				<h:outputText style="margin-left:5%" value="Informática: " />
-				<p:selectBooleanCheckbox style="margin-left:1.4%" />
-				<h:outputText style="margin-left:30%" value="1 Ano " />
-				<p:selectBooleanCheckbox />
-				<h:outputText style="margin-left:5%" value="5 Ano " />
-				<p:selectBooleanCheckbox />
-				<h:outputText style="margin-left:5%" value="1 Colegial " />
-				<p:selectBooleanCheckbox />
-				<p />
-				<h:outputText value="Matemática: " />
-				<p:selectBooleanCheckbox />
-				<h:outputText style="margin-left:5%" value="Ed. Física: " />
-				<p:selectBooleanCheckbox style="margin-left:2.2%" />
-				<h:outputText style="margin-left:30%" value="2 Ano " />
-				<p:selectBooleanCheckbox />
-				<h:outputText style="margin-left:5%" value="6 Ano " />
-				<p:selectBooleanCheckbox />
-				<h:outputText style="margin-left:5%" value="2 Colegial " />
-				<p:selectBooleanCheckbox />
-				<p />
-				<h:outputText value="História: " />
-				<p:selectBooleanCheckbox style="margin-left:2.7%" />
-				<h:outputText style="margin-left:5%" value="Ed. Religiosa: " />
-				<p:selectBooleanCheckbox />
-				<h:outputText style="margin-left:30%" value="3 Ano " />
-				<p:selectBooleanCheckbox />
-				<h:outputText style="margin-left:5%" value="7 Ano " />
-				<p:selectBooleanCheckbox />
-				<h:outputText style="margin-left:5%" value="3 Colegial " />
-				<p:selectBooleanCheckbox />
-				<p />
-				<h:outputText value="Geografia: " />
-				<p:selectBooleanCheckbox style="margin-left:1.1%" />
-				<h:outputText style="margin-left:46.7%" value="4 Ano " />
-				<p:selectBooleanCheckbox />
-				<h:outputText style="margin-left:5%" value="8 Ano " />
-				<p:selectBooleanCheckbox />
-				<p />
-				<h:outputText value="Física: " />
-				<p:selectBooleanCheckbox style="margin-left:3.8%" />
-				<h:outputText style="margin-left:57.7%" value="9 Ano " />
-				<p:selectBooleanCheckbox />
-				<p />
-				<h:outputText value="Química: " />
-				<p:selectBooleanCheckbox style="margin-left:2.1%" />
-				<p />
-				<h:outputText value="Ciências: " />
-				<p:selectBooleanCheckbox style="margin-left:1.8%" />
-				<p />
+				<br />
 				<p:commandButton  style="margin-left:40%" value="Salvar" actionListener="#{escolarBean.salvarProfessor}" ajax="false"/>	
 				<p:commandButton style="margin-left:2%" value="Voltar" action="#{escolarBean.paginaPrincipal}" ajax="false"/>	
 				<p />

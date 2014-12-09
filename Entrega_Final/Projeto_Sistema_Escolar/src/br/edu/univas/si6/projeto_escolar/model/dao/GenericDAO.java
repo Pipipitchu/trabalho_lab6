@@ -34,26 +34,26 @@ abstract class GenericDAO <T, PK> {
 		em.getTransaction().commit();
 	}
 
-	public void deleteCargo(T entity) {
+	public void delete(T entity) {
 
 		em.getTransaction().begin();
-
+		
 		em.remove(entity);
 
 		em.getTransaction().commit();
 	}
 
-	public T getById(PK id) {
+	public T encontrarPorId(PK id) {
 
 		@SuppressWarnings("unchecked")
 		T entity = (T) em.find(getTypeClass(), id);
 		return entity;
 	}
-
 	@SuppressWarnings("unchecked")
-	public List<T> getAll() {
+	public List<T> pegaTudo() {
 		Query q = em.createQuery("from" + getTypeClass().getName(),
 				getTypeClass());
+		System.out.println(q.getResultList());
 		return q.getResultList();
 	}
 
@@ -66,7 +66,7 @@ abstract class GenericDAO <T, PK> {
 	}
 
 	@SuppressWarnings("unchecked")
-	protected T encontra1Result(String localizarNome,Map<String, Object> parametros) {
+	protected Object[] encontra1Result(String localizarNome,Map<String, Object> parametros) {
 		T resultado = null;
 		try{			
 			Query query = em.createNamedQuery(localizarNome);
@@ -75,7 +75,7 @@ abstract class GenericDAO <T, PK> {
 			}
 			resultado = (T) query.getSingleResult();
 			System.out.println("valor do resultado" +resultado.toString());
-			return resultado;
+			return (Object[]) resultado;
 		}catch(NoResultException e){
 			System.out.println("No result found for named query: " + localizarNome);
 		}catch(Exception e) {
