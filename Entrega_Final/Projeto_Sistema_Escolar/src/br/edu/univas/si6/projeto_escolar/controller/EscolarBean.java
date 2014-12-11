@@ -1,20 +1,26 @@
 package br.edu.univas.si6.projeto_escolar.controller;
 
+import java.util.ArrayList;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.persistence.EntityManager;
 
+import org.primefaces.event.CellEditEvent;
+
 import br.edu.univas.si6.projeto_escolar.model.dao.AlunosDAO;
 import br.edu.univas.si6.projeto_escolar.model.dao.EventosDAO;
+import br.edu.univas.si6.projeto_escolar.model.dao.NotasDAO;
 import br.edu.univas.si6.projeto_escolar.model.dao.ProfessoresDAO;
 import br.edu.univas.si6.projeto_escolar.model.dao.UsuariosDAO;
 import br.edu.univas.si6.projeto_escolar.model.to.Alunos;
 import br.edu.univas.si6.projeto_escolar.model.to.Eventos;
 import br.edu.univas.si6.projeto_escolar.model.to.LancarNotas;
 import br.edu.univas.si6.projeto_escolar.model.to.Materia;
+import br.edu.univas.si6.projeto_escolar.model.to.MateriasMedio;
+import br.edu.univas.si6.projeto_escolar.model.to.MateriasPrimario;
 import br.edu.univas.si6.projeto_escolar.model.to.Professores;
 import br.edu.univas.si6.projeto_escolar.model.to.Usuarios;
 import br.edu.univas.si6.projeto_escolar.orm.HibernateUtil;
@@ -22,7 +28,6 @@ import br.edu.univas.si6.projeto_escolar.orm.HibernateUtil;
 
 
 @ManagedBean
-@ViewScoped
 public class EscolarBean {
 	
 	private Alunos alunosTO;
@@ -33,8 +38,14 @@ public class EscolarBean {
 	private Usuarios userTO;
 	private Eventos eventosTO;
 	private LancarNotas lancarNotas;
+	private MateriasPrimario materiasPrimario;
+	private MateriasMedio materiasMedio;
 	private UsuariosDAO usersDAO;
 	private EventosDAO eventosDAO;
+	private NotasDAO notasDAO;
+//	private Collection<AlunosDAO> object; 
+	private ArrayList<String> resultado; 
+	private ArrayList<String> testes;
 	private EntityManager em = HibernateUtil.getEntityManager();
 	
 	public EscolarBean() {
@@ -62,8 +73,13 @@ public class EscolarBean {
 		userTO = new Usuarios();
 		eventosTO = new Eventos();
 		lancarNotas = new LancarNotas();
+		resultado = new ArrayList<String>();
+		testes = new ArrayList<String>();
+		materiasPrimario = new MateriasPrimario();
+		materiasMedio = new MateriasMedio();
 		usersDAO = new UsuariosDAO(em);
 		eventosDAO = new EventosDAO(em);
+		notasDAO = new NotasDAO(em);
 	}
 	
 	public Alunos getAlunosTO() {
@@ -193,7 +209,7 @@ public class EscolarBean {
 	}
 	
 	//Este método contém os valores do select para buscar as notas
-	public void buscarAsNotas() {
+	public String buscarAsNotas() {
 		System.out.println(lancarNotas.getAno());
 		System.out.println(lancarNotas.getTurma());
 		System.out.println(lancarNotas.getBimestre());
@@ -202,6 +218,133 @@ public class EscolarBean {
 		System.out.println(lancarNotas.isProva3());
 		System.out.println(lancarNotas.isExercicio());
 		System.out.println(lancarNotas.isTrabalho());
+		String aluno = null;
+		switch (lancarNotas.getTurma()) {
+		case 1:
+			aluno = "1ano";
+			break;
+		case 2:
+			aluno = "2ano";
+			break;
+		case 3:
+			aluno = "3ano";
+			break;
+		case 4:
+			aluno = "4ano";
+			break;
+		case 5:
+			aluno = "5ano";
+			break;
+		case 6:
+			aluno = "6ano";
+			break;
+		case 7:
+			aluno = "7ano";
+			break;
+		case 8:
+			aluno = "8ano";
+			break;
+		case 9:
+			aluno = "9ano";
+			break;
+		case 21:
+			aluno = "1col";
+			break;
+		case 22:
+			aluno = "2col";
+			break;
+		case 23:
+			aluno = "3col";
+			break;
+		}
+		resultado = alunosDAO.procurarAluno(aluno);
+		System.out.println("teste "+resultado);
+		int count=1;
+		for (String elementos : resultado) {
+			testes.add(elementos);
+			System.out.println(count+" elemento contido: "+elementos);
+		}
+		count=1;
+		System.out.println("teste concluido no EscolarBean...");
+		System.out.println(testes.size());
+//		ArrayList<Alunos> listaAlunos=new ArrayList<Alunos>();
+//		object = object.toString();
+//		System.out.println(resultado.toString());
+		
+//		alunosTO.setNome();
+
+		if(lancarNotas.getTurma() == 21 || lancarNotas.getTurma() == 22 || lancarNotas.getTurma() == 23){
+			return "lancarNotas1";
+		}else{
+			return "lancarNotas11";
+		}
+	}
+	
+	public ArrayList<String> getTestes() {
+		return testes;
+	}
+
+	public void setTestes(ArrayList<String> testes) {
+		this.testes = testes;
+	}
+		
+	public void salvarPrimario(ActionEvent actionEvent){
+		System.out.println(lancarNotas.getAno());
+		System.out.println(lancarNotas.getTurma());
+		System.out.println(lancarNotas.getBimestre());
+		System.out.println(lancarNotas.isProva1());
+		System.out.println(lancarNotas.isProva2());
+		System.out.println(lancarNotas.isProva3());
+		System.out.println(lancarNotas.isExercicio());
+		System.out.println(lancarNotas.isTrabalho());
+		System.out.println(materiasPrimario.getPortugues()+", "+materiasPrimario.getPortuguesCod());
+		System.out.println(materiasPrimario.getMatematica()+", "+materiasPrimario.getMatematicaCod());
+		System.out.println(materiasPrimario.getHistoria()+", "+materiasPrimario.getHistoriaCod());
+		System.out.println(materiasPrimario.getGeografia()+", "+materiasPrimario.getGeografiaCod());
+		System.out.println(materiasPrimario.getCiencias()+", "+materiasPrimario.getCienciasCod());
+		System.out.println(materiasPrimario.getInformatica()+", "+materiasPrimario.getInformaticaCod());
+		System.out.println(materiasPrimario.getEdFisica()+", "+materiasPrimario.getEdFisicaCod());
+		System.out.println(materiasPrimario.getEdReligiosa()+", "+materiasPrimario.getEdReligiosaCod());
+		//notasDAO.salvar(materiasPrimario);
+		addMessage("Notas salvas com sucesso!");
+	}
+	
+	public void salvarMedio(ActionEvent actionEvent){
+		System.out.println(lancarNotas.getAno());
+		System.out.println(lancarNotas.getTurma());
+		System.out.println(lancarNotas.getBimestre());
+		System.out.println(lancarNotas.isProva1());
+		System.out.println(lancarNotas.isProva2());
+		System.out.println(lancarNotas.isProva3());
+		System.out.println(lancarNotas.isExercicio());
+		System.out.println(lancarNotas.isTrabalho());
+		System.out.println(materiasMedio.getPortugues()+", "+materiasMedio.getPortuguesCod());
+		System.out.println(materiasMedio.getMatematica()+", "+materiasMedio.getMatematicaCod());
+		System.out.println(materiasMedio.getHistoria()+", "+materiasMedio.getHistoriaCod());
+		System.out.println(materiasMedio.getGeografia()+", "+materiasMedio.getGeografiaCod());
+		System.out.println(materiasMedio.getFisica()+", "+materiasMedio.getFisicaCod());
+		System.out.println(materiasMedio.getQuimica()+", "+materiasMedio.getQuimicaCod());
+		System.out.println(materiasMedio.getBiologia()+", "+materiasMedio.getBiologiaCod());
+		System.out.println(materiasMedio.getInformatica()+", "+materiasMedio.getInformaticaCod());
+		System.out.println(materiasMedio.getEdFisica()+", "+materiasMedio.getEdFisicaCod());
+		//notasDAO.salvar(materiasMedio);
+		addMessage("Notas salvas com sucesso!");
+	}
+
+	public MateriasPrimario getMateriasPrimario() {
+		return materiasPrimario;
+	}
+
+	public void setMateriasPrimario(MateriasPrimario materiasPrimario) {
+		this.materiasPrimario = materiasPrimario;
+	}
+
+	public MateriasMedio getMateriasMedio() {
+		return materiasMedio;
+	}
+
+	public void setMateriasMedio(MateriasMedio materiasMedio) {
+		this.materiasMedio = materiasMedio;
 	}
 
 	private void addMessage(String summary) {
@@ -213,8 +356,15 @@ public class EscolarBean {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_FATAL, summary,  null);
         FacesContext.getCurrentInstance().addMessage(null, message);
 	}
-	
-	
+
+	public ArrayList<String> getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(ArrayList<String> resultado) {
+		this.resultado = resultado;
+	}
+
 	public Materia getMateriaTO() {
 		return materiaTO;
 	}
@@ -241,4 +391,13 @@ public class EscolarBean {
 		}
 	}
 	
+	public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+         
+        if(newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package br.edu.univas.si6.projeto_escolar.model.dao;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -88,5 +89,34 @@ abstract class GenericDAO <T, PK> {
 		for (Entry<String, Object> entry : parameters.entrySet()) {
 			query.setParameter(entry.getKey(), entry.getValue());
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public ArrayList<String> pegaTudoAluno(String localizarTurma,
+			Map<String, Object> parametros) {
+		ArrayList<String> resultado = null;
+		try{			
+			Query query = em.createNamedQuery(localizarTurma);
+			if(parametros!= null && !parametros.isEmpty()){
+				populateQueryParameters(query, parametros);
+				resultado = (ArrayList<String>) query.getResultList();
+//				System.out.println("valor do resultado" +resultado.toString());
+				System.out.println("tipo do resultado: "+resultado.getClass());
+				int count=1;
+				for (String string : resultado) {
+					System.out.println(count+" elemento contido: "+string);
+					count++;
+				}
+				System.out.println("teste concluido no GenericDAO...");
+//				teste.add((E) resultado);
+				return resultado;
+			}
+		}catch(NoResultException e){
+			System.out.println("No result found for named query: " + localizarTurma);
+		}catch(Exception e) {
+			System.out.println("Error while running query: " + e.getMessage());
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

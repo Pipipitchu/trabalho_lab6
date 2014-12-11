@@ -102,7 +102,43 @@ body {
 				<p:commandButton style="margin-left:2%" value="Buscar" action="#{escolarBean.buscarAsNotas}" ajax="false" />
 				<p />
 				<br />
-				<p:commandButton style="margin-left:40%" value="Salvar" ajax="false" />
+				<p:outputPanel autoUpdate="true">
+				 <p:dataTable id="dadosTabela" var="mater" value="#{escolarBean.testes}"  emptyMessage="Não há registros." rows="5" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+					<p:column headerText="Nome">
+						<h:outputText value="#{mater}" />
+					</p:column>
+					<p:column headerText="Português">
+						<p:inputText id="port" style="width:90px; margin-left:5%; text-align:center" maxlength="2" value="#{escolarBean.materiasMedio.portugues}"></p:inputText>
+					</p:column>
+					<p:column headerText="Matemática" >
+						<p:inputText id="mat" style="width:90px; margin-left:5%; text-align:center" maxlength="2" value="#{escolarBean.materiasMedio.matematica}"></p:inputText>	
+					</p:column>
+					<p:column headerText="História">
+						<p:inputText id="hist" style="width:90px; margin-left:5%; text-align:center" maxlength="2" value="#{escolarBean.materiasMedio.historia}"></p:inputText>
+					</p:column>
+					<p:column headerText="Geografia">
+						<p:inputText id="geo" style="width:90px; margin-left:5%; text-align:center" maxlength="2" value="#{escolarBean.materiasMedio.geografia}"></p:inputText>
+					</p:column>
+					<p:column headerText="Física">
+						<p:inputText id="fis" style="width:90px; margin-left:5%; text-align:center" maxlength="2" value="#{escolarBean.materiasMedio.fisica}"></p:inputText>
+					</p:column>
+					<p:column headerText="Química">
+						<p:inputText id="quim" style="width:90px; margin-left:5%; text-align:center" maxlength="2" value="#{escolarBean.materiasMedio.quimica}"></p:inputText>
+					</p:column>
+					<p:column headerText="Biologia">
+						<p:inputText id="bio" style="width:90px; margin-left:5%; text-align:center"  maxlength="2" value="#{escolarBean.materiasMedio.biologia}"></p:inputText>
+					</p:column>
+					<p:column headerText="Informática">
+						<p:inputText id="infor" style="width:90px; margin-left:5%; text-align:center" maxlength="2" value="#{escolarBean.materiasMedio.informatica}"></p:inputText>
+					</p:column>
+					<p:column headerText="Ed. Física">
+						<p:inputText id="edfis" style="width:90px; margin-left:5%; text-align:center" maxlength="2" value="#{escolarBean.materiasMedio.edFisica}"></p:inputText>
+					</p:column>
+				</p:dataTable> 
+				</p:outputPanel>
+				<p />
+				<br />
+				<p:commandButton style="margin-left:40%" value="Salvar" actionListener="#{escolarBean.salvarMedio}" ajax="false" />
 				<p:commandButton style="margin-left:2%" value="Voltar" action="#{escolarBean.paginaPrincipal}" ajax="false" />
 				<p />
 			</p:panel>

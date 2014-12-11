@@ -3,8 +3,8 @@ package br.edu.univas.si6.projeto_escolar.model.to;
 public class LancarNotas {
 
 	private Integer ano;
-	private String turma;
-	private String bimestre;
+	private Integer turma;
+	private Integer bimestre;
 	
 	private boolean prova1;
 	private boolean prova2;
@@ -18,16 +18,16 @@ public class LancarNotas {
 	public void setAno(Integer ano) {
 		this.ano = ano;
 	}
-	public String getTurma() {
+	public Integer getTurma() {
 		return turma;
 	}
-	public void setTurma(String turma) {
+	public void setTurma(Integer turma) {
 		this.turma = turma;
 	}
-	public String getBimestre() {
+	public Integer getBimestre() {
 		return bimestre;
 	}
-	public void setBimestre(String bimestre) {
+	public void setBimestre(Integer bimestre) {
 		this.bimestre = bimestre;
 	}
 	public boolean isProva1() {

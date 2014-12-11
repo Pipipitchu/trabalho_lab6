@@ -9,13 +9,14 @@ import javax.persistence.SequenceGenerator;
 //import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedQuery;
+
 @Entity
 @Table(name="alunos")
-
-
+@NamedQuery(name="AlunosTO.Localizar_Turma",query="select a.nome from Alunos as a where a.ano=:ano order by a.nome")
 public class Alunos {
 	
-public static final String LOCALIZAR_NOME = "AlunosTO.LocalizarNome";
+public static final String LOCALIZAR_TURMA = "AlunosTO.Localizar_Turma";
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seq_alu_1")
@@ -170,7 +171,4 @@ public static final String LOCALIZAR_NOME = "AlunosTO.LocalizarNome";
 	public void setGrade(int grade) {
 		this.grade = grade;
 	}
-	
-	
-	
 }
